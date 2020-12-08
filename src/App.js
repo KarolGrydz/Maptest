@@ -1,10 +1,11 @@
 import './App.css';
 import { Map } from './Map';
+import Blog from './Blog';
 
 function App() {
   return (
     <>
-      <Map />
+      <Blog />
     </>
   );
 }
