@@ -3,9 +3,11 @@ import { styled } from '@material-ui/core/styles';
 import { Container, Grid } from '@material-ui/core';
 
 import { Preloader } from './Preloader';
-import { BlogContent } from '../layout/BlogContent';
-import { BlogSidebar } from '../layout/BlogSidebar';
-import { BlogPagination } from '../layout/BlogPagination';
+import { BlogContent } from './BlogContent';
+import { BlogSidebar } from './BlogSidebar';
+import { BlogPagination } from './BlogPagination';
+
+import { adventures } from './utils/blogConstans';
 
 const BlogContainer = styled(Container)({
   padding: '10vh 0',
@@ -15,7 +17,9 @@ export const Blog = () => {
   const [trips, setTrips] = useState([]);
 
   useEffect(() => {
-    getTrips(numberOfAllPosts, pageNr, sidebarTrips);
+    // getTrips(numberOfAllPosts, pageNr, sidebarTrips);
+    setTrips(adventures);
+    console.log(adventures);
     // eslint-disable-next-line
   }, []);
 
@@ -25,8 +29,8 @@ export const Blog = () => {
     <BlogContainer>
       <Grid container>
         <BlogContent posts={trips} />
-        <BlogSidebar />
-        <BlogPagination />
+        <BlogSidebar trips={trips} />
+        {/* <BlogPagination /> */}
       </Grid>
     </BlogContainer>
   );
