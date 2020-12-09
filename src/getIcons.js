@@ -1,7 +1,7 @@
 import L from 'leaflet';
 import axios from 'axios';
 
-export const icons = [
+export const staticIcons = [
   {
     id: 1,
     position: [51.11535749698708, 18.034426774577256],
@@ -29,11 +29,16 @@ export const icon = L.icon({
 });
 
 export const getLocations = async () => {
-  const res = await axios.get(`https://hunter.polkowice.pl/wp-json/wp/v2/custom/visited`);
+  const res = await axios.get(`http://hunter.polkowice.pl/wp-json/wp/v2/custom/visited`);
 
-  const locations = res.data.map(({ location }) => location.slice(0, 5));
+  const locations = res.data.map(({ location, id }) => {
+    // console.log(location);
+    const start = location.search(/\bPolska/);
+    return {
+      id,
+      location: start !== -1 ? location.slice(start + 7, location.length) : [],
+    };
+  });
 
-  console.log(locations);
-
-  return res.data;
+  return await locations;
 };

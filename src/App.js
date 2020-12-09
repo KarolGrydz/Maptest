@@ -1,12 +1,11 @@
 import './App.css';
 import { Map } from './Map';
-import Navbar from './Navbar';
+import Blog from './Blog';
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Map />
+      <Blog />
     </>
   );
 }
