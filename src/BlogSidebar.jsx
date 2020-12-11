@@ -53,7 +53,7 @@ const PostContainer = styled('div')({
   },
 });
 
-export const BlogSidebar = ({ trips }) => (
+export const BlogSidebar = ({ trips, allTrips }) => (
   <Grid item xs={3}>
     <Title>Kategorie</Title>
     <List>
@@ -62,7 +62,7 @@ export const BlogSidebar = ({ trips }) => (
           <FilterHdr />
         </Icons>
         <CategoryName href="#">Wyprawy</CategoryName>
-        <PostNumber>(150)</PostNumber>
+        <PostNumber>({allTrips})</PostNumber>
       </ListItem>
       <ListItem>
         <Icons>
@@ -73,7 +73,7 @@ export const BlogSidebar = ({ trips }) => (
       </ListItem>
     </List>
     <Title>Ostatnie posty</Title>
-    {trips.slice(0, 4).map((post) => (
+    {trips.map((post) => (
       <PostContainer key={post.id}>
         <a href={`/wyprawy/${post.id}`}>
           <h6>
@@ -87,5 +87,6 @@ export const BlogSidebar = ({ trips }) => (
 );
 
 BlogSidebar.propTypes = {
-  posts: propTypes.array.isRequired,
+  trips: propTypes.array.isRequired,
+  allTrips: propTypes.number.isRequired,
 };

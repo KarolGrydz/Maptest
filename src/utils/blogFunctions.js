@@ -1,33 +1,23 @@
-const initialState = {
-  news: [],
-  singleNews: [],
-  pageNr: 1,
-  sidebarNews: [],
-  numberOfAllPosts: 0,
-  numberOfAllPages: 0,
-};
+import { ajax } from 'rxjs/ajax';
+import axios from 'axios';
 
-const getTrips = async (gotNumbers = true, pageNr = 1, sidebar) => {
-  console.log(gotNumbers, pageNr, Boolean(sidebar.length), sidebar);
-  const res = await axios.get('https://hunter.polkowice.pl/wp-json/wp/v2/wyprawy', {
+export const getTrips = async (pageNr = 1) => {
+  const res = await axios.get('http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy', {
     params: { page: pageNr },
   });
 
-  dispatch({
-    type: GET_TRIPS,
-    payload: res.data,
-  });
+  return res;
 
-  updatePaginationPage(pageNr);
+  // dispatch({
+  //   type: GET_TRIPS,
+  //   payload: res.data,
+  // });
 
-  if (!sidebar.length) getSidebarTrips(res.data);
+  // updatePaginationPage(pageNr);
 
-  if (!gotNumbers) {
-    addNumberOfAllPosts(res.headers['x-wp-total']);
-    addNumberOfAllPages(res.headers['x-wp-totalpages']);
-  }
+  // if (!sidebar.length) getSidebarTrips(res.data);
 };
 
-const getSingleTrip = async (id) => {
-  const res = await axios.get(`https://hunter.polkowice.pl/wp-json/wp/v2/wyprawy/${id}`);
-};
+// const getSingleTrip = async (id) => {
+//   const res = await axios.get(`https://hunter.polkowice.pl/wp-json/wp/v2/wyprawy/${id}`);
+// };

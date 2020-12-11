@@ -1,5 +1,4 @@
 import React from 'react';
-import TripsContext from '../../context/trips/tripsContext';
 import { styled } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 
@@ -9,15 +8,14 @@ const Container = styled('div')({
   width: '100%',
 });
 
-export const BlogPagination = () => (
+export const BlogPagination = ({ pages, changePage }) => (
   <Container>
     <Pagination
-      count={Number(numberOfAllPages)}
+      count={Number(pages)}
       variant="outlined"
       shape="rounded"
-      onChange={(event, page) => getTrips(numberOfAllPages, page, sidebarTrips)}
-      onClick={() => clearTrips()}
-      page={pageNr}
+      onChange={(event, page) => changePage(page)}
+      // onClick={() => clearTrips()}
     />
   </Container>
 );

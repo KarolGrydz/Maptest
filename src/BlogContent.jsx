@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import { styled } from '@material-ui/core/styles';
 import { Grid, Button } from '@material-ui/core';
 
-// import ForestImage from '../../assets/img/forest.jpg';
+import ForestImage from './img/forest.jpg';
 
 const Title = styled('h2')({
   padding: '15px 0',
@@ -74,7 +74,7 @@ export const BlogContent = ({ posts }) => (
           </Title>
         </a>
         <span>Data wyprawy: {post.date.slice(0, 10)}</span>
-        {/* <PostImg style={{ backgroundImage: `url(${ForestImage})` }}></PostImg> */}
+        <PostImg style={{ backgroundImage: `url(${ForestImage})` }}></PostImg>
         <PostDescription>
           <PostButtom variant="contained">Czytaj</PostButtom>
         </PostDescription>
