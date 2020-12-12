@@ -1,17 +1,10 @@
-import { ajax } from 'rxjs/ajax';
 import axios from 'axios';
 
-export const getTrips = async (pageNr = 1) => {
-  const res = await axios.get('http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy', {
-    params: { page: pageNr },
-  });
+//api
 
-  return res;
-};
-
-export const searchTrip = async (query) => {
+export const searchTrip = async (pageNr = 1, query = '') => {
   const res = await axios.get('http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy', {
-    params: { search: query },
+    params: { search: query, page: pageNr },
   });
 
   return res;
@@ -20,3 +13,22 @@ export const searchTrip = async (query) => {
 // const getSingleTrip = async (id) => {
 //   const res = await axios.get(`https://hunter.polkowice.pl/wp-json/wp/v2/wyprawy/${id}`);
 // };
+
+// helpery
+
+export const updatedTrips = (data, headers, trips) => {
+  const all = data;
+  const count = headers['x-wp-total'];
+  const pages = headers['x-wp-totalpages'];
+
+  trips = { ...trips, all, count, pages };
+
+  if (!Boolean(trips.count)) trips = { ...trips, count };
+  if (!Boolean(trips.pages))
+    trips = {
+      ...trips,
+      pages,
+    };
+
+  return trips;
+};

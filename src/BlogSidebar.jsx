@@ -132,7 +132,7 @@ export const BlogSidebar = ({ trips, allTrips, search }) => {
           <SearchIcon />
         </div>
         <InputBase
-          placeholder="Search…"
+          placeholder="Wyszukaj post po tytyle"
           classes={{
             root: classes.inputRoot,
             input: classes.inputInput,

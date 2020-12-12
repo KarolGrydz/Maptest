@@ -7,43 +7,43 @@ import { BlogContent } from './BlogContent';
 import { BlogSidebar } from './BlogSidebar';
 import { BlogPagination } from './BlogPagination';
 
-import { getTrips, searchTrip } from './utils/blogFunctions';
+import { searchTrip, updatedTrips } from './utils/blogFunctions';
+import { initialState } from './utils/blogConstans';
 
 const BlogContainer = styled(Container)({
   padding: '10vh 0',
 });
 
 export const Blog = () => {
-  const [trips, setTrips] = useState([]);
-  const [allTripsNumber, setAllTripsNumber] = useState(0);
-  const [allPagesNumber, setAllPagesNumber] = useState(0);
+  const [trips, setTrips] = useState(initialState);
   const [lastPosts, setLastPosts] = useState([]);
-  const [pageNr, setPageNr] = useState(1);
 
   useEffect(() => {
-    const data = getTrips(pageNr);
-    data.then((data) => {
-      setTrips(data.data);
-      if (!lastPosts.length) setLastPosts(data.data.slice(0, 4));
-      if (!Boolean(allTripsNumber)) setAllTripsNumber(data.headers['x-wp-total']);
-      if (!Boolean(allPagesNumber)) setAllPagesNumber(data.headers['x-wp-totalpages']);
+    const fetch = searchTrip(trips.currentPage, trips.searchValue);
+    fetch.then(({ data, headers }) => {
+      setTrips(updatedTrips(data, headers, trips));
+      if (!lastPosts.length) setLastPosts(data.slice(0, 4));
     });
-  }, [pageNr]);
+  }, [trips.currentPage]);
 
-  const changePage = (event) => setPageNr(event);
+  const changePage = (event) => setTrips({ ...trips, currentPage: event });
 
-  const search = (event) => console.log(event.target.value);
+  const search = (event) => {
+    setTrips({ ...trips, searchValue: event.target.value });
+    const fetch = searchTrip(trips.currentPage, event.target.value);
+    fetch.then(({ data, headers }) => {
+      setTrips(updatedTrips(data, headers, trips));
+    });
+  };
 
-  if (!trips.length) return <Preloader />;
-
-  console.log(trips);
+  if (!trips.all.length) return <Preloader />;
 
   return (
     <BlogContainer>
       <Grid container>
-        <BlogContent posts={trips} />
-        <BlogSidebar trips={lastPosts} allTrips={Number(allTripsNumber)} search={search} />
-        <BlogPagination pages={allPagesNumber} changePage={changePage} />
+        <BlogContent posts={trips.all} />
+        <BlogSidebar trips={lastPosts} allTrips={Number(trips.count)} search={search} />
+        <BlogPagination pages={trips.pages} changePage={changePage} />
       </Grid>
     </BlogContainer>
   );
