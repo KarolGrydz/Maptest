@@ -7,7 +7,7 @@ import { BlogContent } from './BlogContent';
 import { BlogSidebar } from './BlogSidebar';
 import { BlogPagination } from './BlogPagination';
 
-import { getTrips } from './utils/blogFunctions';
+import { getTrips, searchTrip } from './utils/blogFunctions';
 
 const BlogContainer = styled(Container)({
   padding: '10vh 0',
@@ -32,6 +32,8 @@ export const Blog = () => {
 
   const changePage = (event) => setPageNr(event);
 
+  const search = (event) => console.log(event.target.value);
+
   if (!trips.length) return <Preloader />;
 
   console.log(trips);
@@ -40,7 +42,7 @@ export const Blog = () => {
     <BlogContainer>
       <Grid container>
         <BlogContent posts={trips} />
-        <BlogSidebar trips={lastPosts} allTrips={Number(allTripsNumber)} />
+        <BlogSidebar trips={lastPosts} allTrips={Number(allTripsNumber)} search={search} />
         <BlogPagination pages={allPagesNumber} changePage={changePage} />
       </Grid>
     </BlogContainer>

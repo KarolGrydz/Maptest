@@ -7,15 +7,14 @@ export const getTrips = async (pageNr = 1) => {
   });
 
   return res;
+};
 
-  // dispatch({
-  //   type: GET_TRIPS,
-  //   payload: res.data,
-  // });
+export const searchTrip = async (query) => {
+  const res = await axios.get('http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy', {
+    params: { search: query },
+  });
 
-  // updatePaginationPage(pageNr);
-
-  // if (!sidebar.length) getSidebarTrips(res.data);
+  return res;
 };
 
 // const getSingleTrip = async (id) => {
