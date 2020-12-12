@@ -17,23 +17,27 @@ const BlogContainer = styled(Container)({
 export const Blog = () => {
   const [trips, setTrips] = useState(initialState);
   const [lastPosts, setLastPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (loading) return;
+    setLoading(true);
     const fetch = searchTrip(trips.currentPage, trips.searchValue);
     fetch.then(({ data, headers }) => {
       setTrips(updatedTrips(data, headers, trips));
       if (!lastPosts.length) setLastPosts(data.slice(0, 4));
+      setLoading(false);
     });
-  }, [trips.currentPage]);
+    console.log('fetch');
+  }, [trips.currentPage, trips.searchValue]);
 
   const changePage = (event) => setTrips({ ...trips, currentPage: event });
 
   const search = (event) => {
-    setTrips({ ...trips, searchValue: event.target.value });
-    const fetch = searchTrip(trips.currentPage, event.target.value);
-    fetch.then(({ data, headers }) => {
-      setTrips(updatedTrips(data, headers, trips));
-    });
+    setTrips({ ...trips, searchValue: event.target.value, currentPage: 1 });
+    event.preventDefault();
+    // const fetch = searchTrip(1, event.target.value);
+    // fetch.then(({ data, headers }) => setTrips(updatedTrips(data, headers, trips)));
   };
 
   if (!trips.all.length) return <Preloader />;

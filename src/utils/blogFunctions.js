@@ -21,14 +21,5 @@ export const updatedTrips = (data, headers, trips) => {
   const count = headers['x-wp-total'];
   const pages = headers['x-wp-totalpages'];
 
-  trips = { ...trips, all, count, pages };
-
-  if (!Boolean(trips.count)) trips = { ...trips, count };
-  if (!Boolean(trips.pages))
-    trips = {
-      ...trips,
-      pages,
-    };
-
-  return trips;
+  return (trips = { ...trips, all, count, pages });
 };
