@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { styled } from '@material-ui/core/styles';
-import { Grid, Button, Typography } from '@material-ui/core';
+import { Grid, Button, Typography, Container } from '@material-ui/core';
 
 import ForestImage from './img/forest.jpg';
 
@@ -13,20 +13,13 @@ const useStyles = makeStyles((theme) => ({
     height: '130vh',
     display: 'flex',
     flexDirection: 'column',
-    '& h6': {
-      textTransform: 'uppercase',
-      fontSize: '1.17em',
-      color: '#000',
-    },
-    '& h6:hover': {
-      color: 'rgb(166, 183, 27)',
-    },
-    '& span': {
-      color: 'rgb(166, 183, 27)',
-      fontSize: '1em',
-      textTransform: 'uppercase',
-      padding: '25px 0',
-    },
+  },
+
+  date: {
+    color: 'rgb(166, 183, 27)',
+    fontSize: '1em',
+    textTransform: 'uppercase',
+    padding: '25px 0',
   },
 
   title: {
@@ -34,38 +27,41 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: 'solid #e4e7e8 1px',
     marginRight: '25px',
     color: '#000',
+    textDecoration: 'none',
+    transition: 'color 200ms ease-in-out',
+    fontWeight: 600,
+    fontSize: '1.4rem',
     '&:hover': {
       color: 'rgb(166, 183, 27)',
     },
   },
-}));
 
-const PostDescription = styled('div')({
-  display: 'block',
-  padding: '25px 0 40px 0',
-});
-
-const PostImg = styled('div')({
-  backgroundColor: '#cecece',
-  backgroundPosition: 'center center',
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
-  width: '100%',
-  height: '100%',
-});
-
-const PostButtom = styled(Button)({
-  margin: '25px 0',
-  backgroundColor: 'rgb(166, 183, 27)',
-  '&:hover': {
-    backgroundColor: '#8d9b1a',
+  description: {
+    display: 'block',
+    padding: '25px 0 40px 0',
   },
-  '& span': {
-    padding: '0',
+
+  postImg: {
+    backgroundImage: `url(${ForestImage})`,
+    backgroundColor: '#cecece',
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    width: '100%',
+    height: '100%',
+  },
+
+  readMore: {
+    margin: '25px 0',
+    backgroundColor: 'rgb(166, 183, 27)',
+    transition: 'color 300ms ease-in-out',
     color: '#fff',
-    fontWeight: 'bold',
+    '&:hover': {
+      backgroundColor: '#8d9b1a',
+      color: '#000',
+    },
   },
-});
+}));
 
 export const BlogContent = ({ posts }) => {
   const classes = useStyles();
@@ -75,16 +71,16 @@ export const BlogContent = ({ posts }) => {
       {posts.length !== 0 ? (
         posts.map((post) => (
           <div className={classes.root} key={post.id}>
-            <a href={`/wyprawy/${post.id}`}>
-              <Typography variant="h2" className={classes.title}>
-                <div dangerouslySetInnerHTML={{ __html: post.title.rendered }}></div>
-              </Typography>
+            <a href={`/wyprawy/${post.id}`} className={classes.title}>
+              <div dangerouslySetInnerHTML={{ __html: post.title.rendered }}></div>
             </a>
-            <span>Data wyprawy: {post.date.slice(0, 10)}</span>
-            <PostImg style={{ backgroundImage: `url(${ForestImage})` }}></PostImg>
-            <PostDescription>
-              <PostButtom variant="contained">Czytaj</PostButtom>
-            </PostDescription>
+            <span className={classes.date}>Data wyprawy: {post.date.slice(0, 10)}</span>
+            <div className={classes.postImg} />
+            <Container className={classes.description}>
+              <Button className={classes.readMore} variant="contained">
+                Czytaj
+              </Button>
+            </Container>
           </div>
         ))
       ) : (
