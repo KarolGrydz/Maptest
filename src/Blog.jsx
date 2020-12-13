@@ -1,26 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { styled } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid } from '@material-ui/core';
+import ViewListIcon from '@material-ui/icons/ViewList';
+import ViewAgendaIcon from '@material-ui/icons/ViewAgenda';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
 import { Preloader } from './Preloader';
 import { BlogContent } from './BlogContent';
 import { BlogSidebar } from './BlogSidebar';
 import { BlogPagination } from './BlogPagination';
+import { BlogContentTable } from './BlogContentTable';
 
 import { searchTrip, updatedTrips } from './utils/blogFunctions';
 import { initialState } from './utils/blogConstans';
 
-const BlogContainer = styled(Container)({
-  padding: '10vh 0',
-});
+const useStyles = makeStyles(() => ({
+  root: {
+    padding: '10vh 0',
+  },
+}));
 
 export const Blog = () => {
+  const classes = useStyles();
   const [trips, setTrips] = useState(initialState);
   const [lastPosts, setLastPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [view, setView] = useState('agenda');
 
   useEffect(() => {
-    if (loading) return;
     setLoading(true);
     const fetch = searchTrip(trips.currentPage, trips.searchValue);
     fetch.then(({ data, headers }) => {
@@ -28,28 +36,49 @@ export const Blog = () => {
       if (!lastPosts.length) setLastPosts(data.slice(0, 4));
       setLoading(false);
     });
-    console.log('fetch');
   }, [trips.currentPage, trips.searchValue]);
 
   const changePage = (event) => setTrips({ ...trips, currentPage: event });
 
   const search = (event) => {
     setTrips({ ...trips, searchValue: event.target.value, currentPage: 1 });
-    event.preventDefault();
-    // const fetch = searchTrip(1, event.target.value);
-    // fetch.then(({ data, headers }) => setTrips(updatedTrips(data, headers, trips)));
   };
 
-  if (!trips.all.length) return <Preloader />;
+  const handleView = (value, nextView) => setView(nextView);
+
+  if (loading) return <Preloader />;
 
   return (
-    <BlogContainer>
+    <Container className={classes.root}>
+      <ToggleButtonGroup value={view} size="small" exclusive onChange={handleView}>
+        <ToggleButton value="agenda" aria-label="agenda">
+          <ViewAgendaIcon />
+        </ToggleButton>
+        <ToggleButton value="list" aria-label="list">
+          <ViewListIcon />
+        </ToggleButton>
+      </ToggleButtonGroup>
       <Grid container>
-        <BlogContent posts={trips.all} />
-        <BlogSidebar trips={lastPosts} allTrips={Number(trips.count)} search={search} />
-        <BlogPagination pages={trips.pages} changePage={changePage} />
+        {view === 'agenda' ? (
+          <BlogContent posts={trips.all} view={view} />
+        ) : (
+          <BlogContentTable posts={trips.all} />
+        )}
+        <BlogSidebar
+          trips={lastPosts}
+          allTrips={Number(trips.count)}
+          search={search}
+          inputValue={trips.searchValue}
+          view={view}
+          handleView={handleView}
+        />
+        <BlogPagination
+          pages={trips.pages}
+          changePage={changePage}
+          currentPage={trips.currentPage}
+        />
       </Grid>
-    </BlogContainer>
+    </Container>
   );
 };
 export default Blog;

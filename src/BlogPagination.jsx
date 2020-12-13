@@ -8,14 +8,14 @@ const Container = styled('div')({
   width: '100%',
 });
 
-export const BlogPagination = ({ pages, changePage }) => (
+export const BlogPagination = ({ pages, changePage, currentPage }) => (
   <Container>
     <Pagination
       count={Number(pages)}
       variant="outlined"
       shape="rounded"
       onChange={(event, page) => changePage(page)}
-      // onClick={() => clearTrips()}
+      page={currentPage}
     />
   </Container>
 );

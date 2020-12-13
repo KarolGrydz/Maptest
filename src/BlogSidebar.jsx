@@ -105,7 +105,7 @@ const PostContainer = styled('div')({
   },
 });
 
-export const BlogSidebar = ({ trips, allTrips, search }) => {
+export const BlogSidebar = ({ trips, allTrips, search, inputValue }) => {
   const classes = useStyles();
 
   return (
@@ -132,15 +132,17 @@ export const BlogSidebar = ({ trips, allTrips, search }) => {
           <SearchIcon />
         </div>
         <InputBase
-          placeholder="Wyszukaj post po tytyle"
+          placeholder="Wyszukaj post po tytule"
           classes={{
             root: classes.inputRoot,
             input: classes.inputInput,
           }}
           inputProps={{ 'aria-label': 'search' }}
-          onChange={(e) => search(e)}
+          onKeyPress={(e) => e.key === 'Enter' && search(e)}
+          defaultValue={inputValue}
         />
       </div>
+
       <Title>Ostatnie posty</Title>
       {trips.map((post) => (
         <PostContainer key={post.id}>

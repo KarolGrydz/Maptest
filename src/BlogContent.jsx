@@ -1,41 +1,44 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 // import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { styled } from '@material-ui/core/styles';
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, Typography } from '@material-ui/core';
 
 import ForestImage from './img/forest.jpg';
 
-const Title = styled('h2')({
-  padding: '15px 0',
-  borderBottom: 'solid #e4e7e8 1px',
-  marginRight: '25px',
-  color: '#000',
-  '&:hover': {
-    color: 'rgb(166, 183, 27)',
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: '0 25px',
+    height: '130vh',
+    display: 'flex',
+    flexDirection: 'column',
+    '& h6': {
+      textTransform: 'uppercase',
+      fontSize: '1.17em',
+      color: '#000',
+    },
+    '& h6:hover': {
+      color: 'rgb(166, 183, 27)',
+    },
+    '& span': {
+      color: 'rgb(166, 183, 27)',
+      fontSize: '1em',
+      textTransform: 'uppercase',
+      padding: '25px 0',
+    },
   },
-});
 
-const PostContainer = styled('div')({
-  padding: '0 25px',
-  height: '130vh',
-  display: 'flex',
-  flexDirection: 'column',
-  '& h6': {
-    textTransform: 'uppercase',
-    fontSize: '1.17em',
+  title: {
+    padding: '15px 0',
+    borderBottom: 'solid #e4e7e8 1px',
+    marginRight: '25px',
     color: '#000',
+    '&:hover': {
+      color: 'rgb(166, 183, 27)',
+    },
   },
-  '& h6:hover': {
-    color: 'rgb(166, 183, 27)',
-  },
-  '& span': {
-    color: 'rgb(166, 183, 27)',
-    fontSize: '1em',
-    textTransform: 'uppercase',
-    padding: '25px 0',
-  },
-});
+}));
 
 const PostDescription = styled('div')({
   display: 'block',
@@ -64,24 +67,34 @@ const PostButtom = styled(Button)({
   },
 });
 
-export const BlogContent = ({ posts }) => (
-  <Grid item xs={9}>
-    {posts.map((post) => (
-      <PostContainer key={post.id}>
-        <a href={`/wyprawy/${post.id}`}>
-          <Title>
-            <div dangerouslySetInnerHTML={{ __html: post.title.rendered }}></div>
-          </Title>
-        </a>
-        <span>Data wyprawy: {post.date.slice(0, 10)}</span>
-        <PostImg style={{ backgroundImage: `url(${ForestImage})` }}></PostImg>
-        <PostDescription>
-          <PostButtom variant="contained">Czytaj</PostButtom>
-        </PostDescription>
-      </PostContainer>
-    ))}
-  </Grid>
-);
+export const BlogContent = ({ posts }) => {
+  const classes = useStyles();
+
+  return (
+    <Grid item xs={9}>
+      {posts.length !== 0 ? (
+        posts.map((post) => (
+          <div className={classes.root} key={post.id}>
+            <a href={`/wyprawy/${post.id}`}>
+              <Typography variant="h2" className={classes.title}>
+                <div dangerouslySetInnerHTML={{ __html: post.title.rendered }}></div>
+              </Typography>
+            </a>
+            <span>Data wyprawy: {post.date.slice(0, 10)}</span>
+            <PostImg style={{ backgroundImage: `url(${ForestImage})` }}></PostImg>
+            <PostDescription>
+              <PostButtom variant="contained">Czytaj</PostButtom>
+            </PostDescription>
+          </div>
+        ))
+      ) : (
+        <Typography variant="h2" className={classes.title}>
+          Brak postów
+        </Typography>
+      )}
+    </Grid>
+  );
+};
 
 BlogContent.propTypes = {
   posts: propTypes.array.isRequired,
