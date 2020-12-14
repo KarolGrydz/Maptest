@@ -9,7 +9,7 @@ const Container = styled('div')({
   width: '100%',
 });
 
-export const BlogPagination = ({ pages, changePage, currentPage }) => (
+const BlogPagination = ({ pages, changePage, currentPage }) => (
   <Container>
     <Pagination
       count={Number(pages)}
@@ -26,3 +26,5 @@ BlogPagination.propTypes = {
   changePage: propTypes.number.isRequired,
   currentPage: propTypes.number.isRequired,
 };
+
+export default BlogPagination;

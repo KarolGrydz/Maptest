@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { styled } from '@material-ui/core/styles';
 import { Grid, Button, Typography, Container } from '@material-ui/core';
@@ -71,9 +71,9 @@ export const BlogContent = ({ posts }) => {
       {posts.length !== 0 ? (
         posts.map((post) => (
           <div className={classes.root} key={post.id}>
-            <a href={`/wyprawy/${post.id}`} className={classes.title}>
+            <Link to={`/wyprawy/${post.id}`} className={classes.title}>
               <div dangerouslySetInnerHTML={{ __html: post.title.rendered }}></div>
-            </a>
+            </Link>
             <span className={classes.date}>Data wyprawy: {post.date.slice(0, 10)}</span>
             <div className={classes.postImg} />
             <Container className={classes.description}>
