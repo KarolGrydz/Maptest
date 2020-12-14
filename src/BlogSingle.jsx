@@ -1,11 +1,12 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
+import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { styled } from '@material-ui/core/styles';
-import TripsContext from '../../context/trips/tripsContext';
-import { Container, Grid } from '@material-ui/core';
+import { Container } from '@material-ui/core';
+import { getSingleTrip } from '../../utils/blogAPI';
 
-import { Preloader } from '../layout/Preloader';
-import { BlogSidebar } from '../layout/BlogSidebar';
+import Preloader from './Preloader';
+import BlogSidebar from './BlogSidebar';
 
 import ForestImage from '../../assets/img/forest.jpg';
 
@@ -60,19 +61,19 @@ const PostImg = styled('div')({
   height: '500px',
 });
 
-export const BlogSinglePost = ({ match }) => {
-  const tripsContext = useContext(TripsContext);
-  const { singleTrip, getSingleTrip, trips, clearSingleTrip } = tripsContext;
+const BlogSingle = ({ match }) => {
+  const [post, setPost] = useState([])
 
   useEffect(() => {
     getSingleTrip(match.params.id);
+    console.log(match.params);
     // eslint-disable-next-line
   }, [match.params.id]);
 
-  if (!singleTrip.length && !trips.length) return <Preloader />;
+    if (!singleTrip.length && !trips.length) return <Preloader />;
 
   return (
-    <BlogContainer>
+    <Container>
       {singleTrip.length === 0 ? (
         <Preloader />
       ) : (
@@ -102,6 +103,12 @@ export const BlogSinglePost = ({ match }) => {
           <BlogSidebar posts={trips} />
         </Grid>
       )}
-    </BlogContainer>
+    </Container>
   );
 };
+
+BlogSingle.propTypes = {
+  match: propTypes.objectOf(propTypes.string).isRequired,
+};
+
+export default BlogSingle;

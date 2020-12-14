@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import { styled } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 
@@ -19,3 +20,9 @@ export const BlogPagination = ({ pages, changePage, currentPage }) => (
     />
   </Container>
 );
+
+BlogPagination.propTypes = {
+  pages: propTypes.array.isRequired,
+  changePage: propTypes.number.isRequired,
+  currentPage: propTypes.number.isRequired,
+};
