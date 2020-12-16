@@ -10,9 +10,11 @@ export const searchTrip = async (pageNr = 1, query = '') => {
   return res;
 };
 
-// const getSingleTrip = async (id) => {
-//   const res = await axios.get(`https://hunter.polkowice.pl/wp-json/wp/v2/wyprawy/${id}`);
-// };
+export const getSingleTrip = async (id) => {
+  const res = await axios.get(`https://hunter.polkowice.pl/wp-json/wp/v2/wyprawy/${id}`);
+
+  return res;
+};
 
 // helpery
 
@@ -21,5 +23,5 @@ export const updatedTrips = (data, headers, trips) => {
   const count = headers['x-wp-total'];
   const pages = headers['x-wp-totalpages'];
 
-  return (trips = { ...trips, all, count, pages });
+  return { ...trips, all, count, pages };
 };

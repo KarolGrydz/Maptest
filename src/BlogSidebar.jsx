@@ -105,7 +105,7 @@ const PostContainer = styled('div')({
   },
 });
 
-export const BlogSidebar = ({ trips, allTrips, search, inputValue }) => {
+const BlogSidebar = ({ trips, allTrips, search, inputValue }) => {
   const classes = useStyles();
 
   return (
@@ -162,3 +162,5 @@ BlogSidebar.propTypes = {
   trips: propTypes.array.isRequired,
   allTrips: propTypes.number.isRequired,
 };
+
+export default BlogSidebar;

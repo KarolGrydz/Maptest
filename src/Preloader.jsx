@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Preloader = () => {
+const Preloader = () => {
   const classes = useStyles();
 
   return (
@@ -23,3 +23,5 @@ export const Preloader = () => {
     </div>
   );
 };
+
+export default Preloader;

@@ -6,10 +6,10 @@ import ViewAgendaIcon from '@material-ui/icons/ViewAgenda';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
-import { Preloader } from './Preloader';
+import Preloader from './Preloader';
 import { BlogContent } from './BlogContent';
-import { BlogSidebar } from './BlogSidebar';
-import { BlogPagination } from './BlogPagination';
+import BlogSidebar from './BlogSidebar';
+import BlogPagination from './BlogPagination';
 import { BlogContentTable } from './BlogContentTable';
 
 import { searchTrip, updatedTrips } from './utils/blogFunctions';
@@ -29,13 +29,16 @@ export const Blog = () => {
   const [view, setView] = useState('agenda');
 
   useEffect(() => {
+    let mounted = true;
     setLoading(true);
     const fetch = searchTrip(trips.currentPage, trips.searchValue);
     fetch.then(({ data, headers }) => {
-      setTrips(updatedTrips(data, headers, trips));
+      if (mounted) setTrips(updatedTrips(data, headers, trips));
       if (!lastPosts.length) setLastPosts(data.slice(0, 4));
       setLoading(false);
     });
+
+    return () => (mounted = false);
   }, [trips.currentPage, trips.searchValue]);
 
   const changePage = (event) => setTrips({ ...trips, currentPage: event });
@@ -69,8 +72,6 @@ export const Blog = () => {
           allTrips={Number(trips.count)}
           search={search}
           inputValue={trips.searchValue}
-          view={view}
-          handleView={handleView}
         />
         <BlogPagination
           pages={trips.pages}
