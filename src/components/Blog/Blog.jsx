@@ -15,6 +15,9 @@ import BlogContentTable from './BlogContentTable';
 import { searchTrip, updatedTrips } from '../../utils/blogAPI';
 import initialState from '../../constants/initialState';
 
+import { useDispatch } from 'react-redux';
+import { test } from '../../actions/blogActions';
+
 const useStyles = makeStyles(() => ({
   root: {
     padding: '10vh 0',
@@ -27,10 +30,12 @@ const Blog = () => {
   const [lastPosts, setLastPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [view, setView] = useState('agenda');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let mounted = true;
     setLoading(true);
+    dispatch(test());
     const fetch = searchTrip(trips.currentPage, trips.searchValue);
     fetch.then(({ data, headers }) => {
       if (mounted) setTrips(updatedTrips(data, headers, trips));
