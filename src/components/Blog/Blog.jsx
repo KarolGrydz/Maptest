@@ -16,7 +16,8 @@ import { searchTrip, updatedTrips } from '../../utils/blogAPI';
 import initialState from '../../constants/initialState';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { clearCurrent } from '../../actions/blogActions';
+import { clearTrips } from '../../actions/blogActions';
+import { selectAllTitles } from '../../actions/selectors';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -31,14 +32,14 @@ const Blog = () => {
   const [loading, setLoading] = useState(false);
   const [view, setView] = useState('agenda');
   const dispatch = useDispatch();
-  const { error } = useSelector((state) => state.blog);
+  const allTrips = useSelector(selectAllTitles);
 
   useEffect(() => {
     let mounted = true;
     setLoading(true);
-    const testVar = dispatch(clearCurrent());
+    const testVar = dispatch(clearTrips());
     console.log(testVar);
-    console.log(error);
+    console.log(allTrips);
     const fetch = searchTrip(trips.currentPage, trips.searchValue);
     fetch.then(({ data, headers }) => {
       if (mounted) setTrips(updatedTrips(data, headers, trips));

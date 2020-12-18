@@ -1,26 +1,27 @@
 import {
-  GET_LOGS,
+  GET_TRIPS,
+  GET_SINGLE_TRIP,
+  CLEAR_CURRENT_TRIP,
+  CLEAR_TRIPS,
   SET_LOADING,
-  LOGS_ERROR,
-  ADD_LOG,
-  DELETE_LOG,
-  SET_CURRENT,
-  CLEAR_CURRENT,
-  UPDATE_LOG,
-  SEARCH_LOGS,
+  TRIP_ERROR,
+  SEARCH_TRIP,
 } from './types';
 
-export const getLogs = () => async (dispatch) => {
+import axios from 'axios';
+
+export const getTrips = (pageNr = 1, query = '') => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await fetch('/logs');
-    const data = await res.json();
+    const res = await axios.get('http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy', {
+      params: { search: query, page: pageNr },
+    });
 
-    dispatch({ type: GET_LOGS, payload: data });
+    dispatch({ type: GET_TRIPS, payload: res });
   } catch (error) {
     dispatch({
-      type: LOGS_ERROR,
+      type: TRIP_ERROR,
       payload: error.response.statusText,
     });
   }
@@ -33,92 +34,38 @@ export const setLoading = () => {
   };
 };
 
-export const addLog = (log) => async (dispatch) => {
+export const searchTrip = (pageNr = 1, query = '') => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await fetch('/logs', {
-      method: 'POST',
-      body: JSON.stringify(log),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    const res = await axios.get('http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy', {
+      params: { search: query, page: pageNr },
     });
-    const data = await res.json();
 
-    dispatch({ type: ADD_LOG, payload: data });
+    dispatch({ type: SEARCH_TRIP, payload: res });
   } catch (error) {
     dispatch({
-      type: LOGS_ERROR,
+      type: TRIP_ERROR,
       payload: error.response.statusText,
     });
   }
 };
 
-export const deleteLog = (id) => async (dispatch) => {
-  try {
-    setLoading();
-
-    await fetch(`/logs/${id}`, {
-      method: 'DELETE',
-    });
-
-    dispatch({ type: DELETE_LOG, payload: id });
-  } catch (error) {
-    dispatch({
-      type: LOGS_ERROR,
-      payload: error.response.statusText,
-    });
-  }
-};
-
-export const updateLog = (log) => async (dispatch) => {
-  try {
-    setLoading();
-
-    const res = await fetch(`/logs/${log.id}`, {
-      method: 'PUT',
-      body: JSON.stringify(log),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await res.json();
-
-    dispatch({ type: UPDATE_LOG, payload: data });
-  } catch (error) {
-    dispatch({
-      type: LOGS_ERROR,
-      payload: error.response.statusText,
-    });
-  }
-};
-
-export const searchLogs = (text) => async (dispatch) => {
-  try {
-    setLoading();
-    const res = await fetch(`/logs?q=${text}`);
-    const data = await res.json();
-    console.log(data);
-
-    dispatch({ type: SEARCH_LOGS, payload: data });
-  } catch (error) {
-    dispatch({
-      type: LOGS_ERROR,
-      payload: error.response.statusText,
-    });
-  }
-};
-
-export const setCurrent = (log) => {
+export const getSingleTrip = (trip) => {
   return {
-    type: SET_CURRENT,
-    payload: log,
+    type: GET_SINGLE_TRIP,
+    payload: trip,
   };
 };
 
-export const clearCurrent = () => {
+export const clearCurrentTrip = () => {
   return {
-    type: CLEAR_CURRENT,
+    type: CLEAR_CURRENT_TRIP,
+  };
+};
+
+export const clearTrips = () => {
+  return {
+    type: CLEAR_TRIPS,
   };
 };
