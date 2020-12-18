@@ -31,7 +31,7 @@ const Blog = () => {
   const [loading, setLoading] = useState(false);
   const [view, setView] = useState('agenda');
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.blog);
+  const { error } = useSelector((state) => state.blog);
 
   useEffect(() => {
     let mounted = true;
