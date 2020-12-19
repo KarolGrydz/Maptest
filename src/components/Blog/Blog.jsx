@@ -16,7 +16,7 @@ import { searchTrip, updatedTrips } from '../../utils/blogAPI';
 import initialState from '../../constants/initialState';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { clearTrips } from '../../actions/blogActions';
+import { getTrips } from '../../actions/blogActions';
 import { selectAllTitles } from '../../actions/selectors';
 
 const useStyles = makeStyles(() => ({
@@ -37,8 +37,7 @@ const Blog = () => {
   useEffect(() => {
     let mounted = true;
     setLoading(true);
-    const testVar = dispatch(clearTrips());
-    console.log(testVar);
+    dispatch(getTrips(2, 'bunkier'));
     console.log(allTrips);
     const fetch = searchTrip(trips.currentPage, trips.searchValue);
     fetch.then(({ data, headers }) => {
