@@ -6,16 +6,21 @@ import {
   TRIP_ERROR,
   SEARCH_TRIP,
   SET_LOADING,
+  SET_CURRENT_PAGE,
+  SET_TRIPS_NUMBER,
+  SET_PAGES,
+  SET_SIDEBAR_TRIPS,
 } from '../actions/types';
 
 const initialState = {
   trips: [],
-  singleTrip: [],
+  singleTrip: {},
+  sidebarTrips: [],
   pages: 0,
   currentPage: 1,
   tripsNumber: 0,
   search: '',
-  loading: false,
+  isLoading: false,
   error: null,
 };
 
@@ -58,6 +63,30 @@ export default (state = initialState, action) => {
       return {
         ...state,
         error: action.payload,
+      };
+
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
+
+    case SET_TRIPS_NUMBER:
+      return {
+        ...state,
+        tripsNumber: action.payload,
+      };
+
+    case SET_PAGES:
+      return {
+        ...state,
+        pages: action.payload,
+      };
+
+    case SET_SIDEBAR_TRIPS:
+      return {
+        ...state,
+        sidebarTrips: action.payload,
       };
 
     case SET_LOADING:

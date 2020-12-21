@@ -16,8 +16,12 @@ import { searchTrip, updatedTrips } from '../../utils/blogAPI';
 import initialState from '../../constants/initialState';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getTrips } from '../../actions/blogActions';
-import { selectAllTitles } from '../../actions/selectors';
+import { getTrips } from '../../store/actions/blogActions';
+import {
+  selectAllTitles,
+  selectAllPostNumber,
+  selectAllPagesNumber,
+} from '../../store/actions/selectors';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -33,12 +37,13 @@ const Blog = () => {
   const [view, setView] = useState('agenda');
   const dispatch = useDispatch();
   const allTrips = useSelector(selectAllTitles);
+  const allPostNumbers = useSelector(selectAllPostNumber);
+  const allPagesNumber = useSelector(selectAllPagesNumber);
 
   useEffect(() => {
     let mounted = true;
     setLoading(true);
-    dispatch(getTrips(2, 'bunkier'));
-    console.log(allTrips);
+    dispatch(getTrips());
     const fetch = searchTrip(trips.currentPage, trips.searchValue);
     fetch.then(({ data, headers }) => {
       if (mounted) setTrips(updatedTrips(data, headers, trips));
@@ -62,6 +67,9 @@ const Blog = () => {
 
   return (
     <Container className={classes.root}>
+      {console.log(allTrips)}
+      {console.log(allPostNumbers)}
+      {console.log(allPagesNumber)}
       <ToggleButtonGroup value={view} size="small" exclusive onChange={handleView}>
         <ToggleButton value="agenda" aria-label="agenda">
           <ViewAgendaIcon />
