@@ -31,14 +31,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         trips: action.payload,
-        loading: true,
+        isLoading: true,
       };
 
     case GET_SINGLE_TRIP:
       return {
         ...state,
         singleTrip: action.payload,
-        loading: true,
+        isLoading: true,
       };
 
     case SEARCH_TRIP:
@@ -86,13 +86,13 @@ export default (state = initialState, action) => {
     case SET_SIDEBAR_TRIPS:
       return {
         ...state,
-        sidebarTrips: action.payload,
+        sidebarTrips: action.payload.slice(0, 4),
       };
 
     case SET_LOADING:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
       };
 
     default:
