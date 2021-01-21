@@ -1,0 +1,12 @@
+export const GET_TRIPS = 'GET_TRIPS';
+export const GET_SINGLE_TRIP = 'GET_SINGLE_TRIP';
+export const CLEAR_SINGLE_TRIP = 'CLEAR_SINGLE_TRIP';
+export const CLEAR_TRIPS = 'CLEAR_TRIPS';
+export const SET_LOADING = 'SET_LOADING';
+export const TRIP_ERROR = 'TRIP_ERROR';
+export const SEARCH_TRIP = 'SEARCH_TRIP';
+export const SET_PAGES = 'SET_PAGES';
+export const SET_TRIPS_NUMBER = 'SET_TRIPS_NUMBER';
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+export const SET_SIDEBAR_TRIPS = 'SET_SIDEBAR_TRIPS';
+export const SET_VIEW = 'SET_VIEW';

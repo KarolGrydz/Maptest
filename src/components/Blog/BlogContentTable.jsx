@@ -1,6 +1,5 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Grid,
@@ -12,8 +11,10 @@ import {
   TableHead,
   TableRow,
   Typography,
-  Button,
 } from '@material-ui/core';
+
+import BlogTitle from './BlogTitle';
+import BlogButtonMore from './BlogButtonMore';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,26 +40,6 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.action.hover,
     },
   },
-
-  readMore: {
-    backgroundColor: `${theme.palette.secondary.main}`,
-    transition: 'color 300ms ease-in-out',
-    color: `${theme.palette.secondary.contrastText}`,
-    '&:hover': {
-      backgroundColor: `${theme.palette.primary.main}`,
-      color: `${theme.palette.primary.contrastText}`,
-    },
-  },
-
-  title: {
-    color: `${theme.palette.secondary.contrastText}`,
-    textDecoration: 'none',
-    transition: 'color 200ms ease-in-out',
-    fontWeight: 600,
-    '&:hover': {
-      color: `${theme.palette.secondary.main}`,
-    },
-  },
 }));
 
 const BlogContentTable = ({ posts }) => {
@@ -80,13 +61,11 @@ const BlogContentTable = ({ posts }) => {
               {posts.map(({ id, title, date }) => (
                 <TableRow className={classes.row} key={id}>
                   <TableCell component="th" scope="row">
-                    <Link to={`/wyprawy/${id}`} className={classes.title}>
-                      <div dangerouslySetInnerHTML={{ __html: title.rendered }} />
-                    </Link>
+                    <BlogTitle id={id} title={title} variant="subtitle1" />
                   </TableCell>
                   <TableCell align="right">{date.slice(0, 10)}</TableCell>
                   <TableCell align="right">
-                    <Button className={classes.readMore}>Czytaj</Button>
+                    <BlogButtonMore text="Czytaj" id={id} />
                   </TableCell>
                 </TableRow>
               ))}
@@ -94,7 +73,7 @@ const BlogContentTable = ({ posts }) => {
           </Table>
         </TableContainer>
       ) : (
-        <Typography>Brak postów</Typography>
+        <Typography variant="h2">Brak postów</Typography>
       )}
     </Grid>
   );

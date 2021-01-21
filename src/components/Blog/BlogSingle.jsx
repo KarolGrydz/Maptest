@@ -1,48 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import propTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { isEmpty } from 'ramda';
+import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Grid, Typography } from '@material-ui/core';
-import { getSingleTrip } from '../../utils/blogAPI';
+import { Container, Grid } from '@material-ui/core';
 
 import Preloader from './Preloader';
-// import BlogSidebar from './BlogSidebar';
+import BlogSidebar from './BlogSidebar';
+import BlogTitle from './BlogTitle';
+import BlogDate from './BlogDate';
+
+import { getLoading, getSingleTrip } from '../../store/actions/selectors';
+import { getSinglePost, setLoading } from '../../store/actions/blogActions';
 
 import ForestImage from '../../assets/img/forest.jpg';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     padding: '10vh 0',
-  },
-
-  title: {
-    padding: theme.spacing(2, 0),
-    borderBottom: 'solid #e4e7e8 1px',
-    marginRight: theme.spacing(3),
-    color: `${theme.palette.secondary.contrastText}`,
-    textDecoration: 'none',
-    transition: 'color 200ms ease-in-out',
-    fontWeight: 600,
-    '&:hover': {
-      color: `${theme.palette.secondary.main}`,
-    },
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '1em',
-    },
   },
 
   postContainer: {
     padding: '0 25px',
     display: 'flex',
     flexDirection: 'column',
-  },
-
-  postDescription: {
-    display: 'block',
-    padding: '25px 0 40px 0',
-    '& span': {
-      color: '#000',
-    },
   },
 
   postImg: {
@@ -58,46 +39,32 @@ const useStyles = makeStyles((theme) => ({
 
 const BlogSingle = ({ match }) => {
   const classes = useStyles();
-  const [post, setPost] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const post = useSelector(getSingleTrip);
+  const isLoading = useSelector(getLoading);
 
   useEffect(() => {
     let mounted = true;
-    setLoading(true);
-    const fetch = getSingleTrip(match.params.id);
-    fetch.then(({ data }) => {
-      if (mounted) setPost(data);
-      setLoading(false);
-    });
+    dispatch(setLoading());
+    if (mounted) dispatch(getSinglePost(match.params.id));
     return () => {
       mounted = false;
     };
     // eslint-disable-next-line
   }, [match.params.id]);
 
-  if (loading) return <Preloader />;
+  if (!isLoading) return <Preloader />;
 
   return (
     <Container className={classes.root}>
-      {post.length === 0 ? (
+      {isEmpty(post) ? (
         <Preloader />
       ) : (
         <Grid container>
           <Grid item xs={9}>
             <div className={classes.postContainer} key={post.id}>
-              <Link to={`/wyprawy/${post.id}`} className={classes.title}>
-                <Typography variant="h4">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: post.title.rendered,
-                    }}
-                  />
-                </Typography>
-              </Link>
-              <span className={classes.postDescription}>
-                Data wyprawy:
-                {post.date.slice(0, 10)}
-              </span>
+              <BlogTitle id={post.id} title={post.title.rendered} />
+              <BlogDate date={post.date} text="Data wyprawy: " />
               <div className={classes.postImg} />
               <div
                 className={classes.postDescription}
@@ -107,6 +74,7 @@ const BlogSingle = ({ match }) => {
               />
             </div>
           </Grid>
+          <BlogSidebar />
         </Grid>
       )}
     </Container>
@@ -115,10 +83,10 @@ const BlogSingle = ({ match }) => {
 
 BlogSingle.propTypes = {
   match: propTypes.shape({
-    path: propTypes.string,
-    url: propTypes.string,
     isExact: propTypes.bool,
     params: propTypes.objectOf(propTypes.string),
+    path: propTypes.string,
+    url: propTypes.string,
   }).isRequired,
 };
 

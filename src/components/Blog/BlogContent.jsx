@@ -1,13 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
-import {
-  Grid,
-  Button,
-  Typography,
-  Container,
-} from '@material-ui/core';
+import { Grid, Typography, Container } from '@material-ui/core';
+
+import BlogTitle from './BlogTitle';
+import BlogButtonMore from './BlogButtonMore';
+import BlogDate from './BlogDate';
 
 import ForestImage from '../../assets/img/forest.jpg';
 
@@ -27,28 +25,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  date: {
-    color: `${theme.palette.secondary.main}`,
-    textTransform: 'uppercase',
-    padding: theme.spacing(3, 0),
-  },
-
-  title: {
-    padding: theme.spacing(2, 0),
-    borderBottom: 'solid #e4e7e8 1px',
-    marginRight: theme.spacing(3),
-    color: `${theme.palette.secondary.contrastText}`,
-    textDecoration: 'none',
-    transition: 'color 200ms ease-in-out',
-    fontWeight: 600,
-    '&:hover': {
-      color: `${theme.palette.secondary.main}`,
-    },
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '1em',
-    },
-  },
-
   description: {
     display: 'block',
     padding: theme.spacing(3, 0, 5, 0),
@@ -63,17 +39,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
   },
-
-  readMore: {
-    margin: theme.spacing(3, 0),
-    backgroundColor: `${theme.palette.secondary.main}`,
-    transition: 'color 300ms ease-in-out',
-    color: `${theme.palette.secondary.contrastText}`,
-    '&:hover': {
-      backgroundColor: `${theme.palette.primary.main}`,
-      color: `${theme.palette.primary.contrastText}`,
-    },
-  },
 }));
 
 const BlogContent = ({ posts }) => {
@@ -84,27 +49,16 @@ const BlogContent = ({ posts }) => {
       {posts.length !== 0 ? (
         posts.map(({ id, title, date }) => (
           <div className={classes.root} key={id}>
-            <Link to={`/wyprawy/${id}`} className={classes.title}>
-              <Typography variant="h4">
-                <div dangerouslySetInnerHTML={{ __html: title.rendered }} />
-              </Typography>
-            </Link>
-            <span className={classes.date}>
-              Data wyprawy:
-              {date.slice(0, 10)}
-            </span>
+            <BlogTitle id={id} title={title} />
+            <BlogDate date={date} text="Data wyprawy: " />
             <div className={classes.postImg} />
             <Container className={classes.description}>
-              <Button className={classes.readMore} variant="contained">
-                Czytaj
-              </Button>
+              <BlogButtonMore id={id} text="Czytaj" />
             </Container>
           </div>
         ))
       ) : (
-        <Typography variant="h2" className={classes.title}>
-          Brak postów
-        </Typography>
+        <Typography variant="h2">Brak postów</Typography>
       )}
     </Grid>
   );

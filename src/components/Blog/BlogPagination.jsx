@@ -1,8 +1,11 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import Container from '@material-ui/core/Container';
+
+import { setCurrentPage } from '../../store/actions/blogActions';
+import { getCurrentPage, getAllPagesNumber } from '../../store/actions/selectors';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -12,8 +15,11 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const BlogPagination = ({ pages, changePage, currentPage }) => {
+const BlogPagination = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const currentPage = useSelector(getCurrentPage);
+  const pages = useSelector(getAllPagesNumber);
 
   return (
     <Container className={classes.root}>
@@ -21,17 +27,11 @@ const BlogPagination = ({ pages, changePage, currentPage }) => {
         count={pages}
         variant="outlined"
         shape="rounded"
-        onChange={(event, page) => changePage(page)}
+        onChange={(event, page) => dispatch(setCurrentPage(page))}
         page={currentPage}
       />
     </Container>
   );
-};
-
-BlogPagination.propTypes = {
-  pages: propTypes.number.isRequired,
-  changePage: propTypes.func.isRequired,
-  currentPage: propTypes.number.isRequired,
 };
 
 export default BlogPagination;

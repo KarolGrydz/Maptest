@@ -1,5 +1,7 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import store from './store/store';
 
 import Home from './scenes/Home';
 import Navbar from './components/Navbar';
@@ -11,18 +13,20 @@ import 'leaflet/dist/leaflet.css';
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/wyprawy/" component={Blog} />
-        <Route exact path="/wyprawy/:id" component={BlogSingle} />
-        {/* <Route exact path='/kim-jestesmy/' component={About} />
-        <Route exact path='/kontakt/' component={Contact} />
+    <Provider store={store}>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/wyprawy/" component={Blog} />
+          <Route exact path="/wyprawy/:id" component={BlogSingle} />
+          {/* <Route exact path='/kim-jestesmy/' component={About} />
+          <Route exact path='/kontakt/' component={Contact} />
         <Route exact path='/przyjaciele/' component={Friends} /> */}
-      </Switch>
-      <Footer />
-    </Router>
+        </Switch>
+        <Footer />
+      </Router>
+    </Provider>
   );
 }
 
