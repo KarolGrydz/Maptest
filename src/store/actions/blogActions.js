@@ -17,7 +17,10 @@ import {
   SET_VIEW,
 } from './types';
 
-export const setCurrentPage = (event) => ({ type: SET_CURRENT_PAGE, payload: event });
+export const setCurrentPage = (event) => ({
+  type: SET_CURRENT_PAGE,
+  payload: event,
+});
 
 export const searchTrip = (event) => ({ type: SEARCH_TRIP, payload: event });
 
@@ -32,10 +35,12 @@ export const setView = (event) => ({ type: SET_VIEW, payload: event });
 export const getPosts = (pageNr = 1, query = '') => async (dispatch) => {
   setLoading();
 
-  ajax(`http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy?search=${query}&page=${pageNr}`)
+  ajax(
+    `http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy?search=${query}&page=${pageNr}`
+  )
     .pipe(
       map((response) => response),
-      catchError((error) => of(error)),
+      catchError((error) => of(error))
     )
     .subscribe({
       next: (res) => {
@@ -67,7 +72,7 @@ export const getSinglePost = (id) => async (dispatch) => {
   ajax(`http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy/${id}`)
     .pipe(
       map((response) => response),
-      catchError((error) => of(error)),
+      catchError((error) => of(error))
     )
     .subscribe({
       next: (res) => {
@@ -91,7 +96,7 @@ export const getSidebarPosts = () => async (dispatch) => {
   ajax('http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy')
     .pipe(
       map((response) => response),
-      catchError((error) => of(error)),
+      catchError((error) => of(error))
     )
     .subscribe({
       next: (res) => {

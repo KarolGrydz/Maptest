@@ -9,6 +9,9 @@ import Footer from './components/Footer';
 import Blog from './components/Blog/Blog';
 import BlogSingle from './components/Blog/BlogSingle';
 
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+
 import 'leaflet/dist/leaflet.css';
 
 function App() {
