@@ -33,7 +33,8 @@ export const clearTrips = () => ({ type: CLEAR_TRIPS });
 export const setView = (event) => ({ type: SET_VIEW, payload: event });
 
 export const getPosts = (pageNr = 1, query = '') => async (dispatch) => {
-  setLoading();
+  dispatch(setLoading());
+  dispatch(clearCurrentTrip());
 
   ajax(
     `http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy?search=${query}&page=${pageNr}`
@@ -67,7 +68,8 @@ export const getPosts = (pageNr = 1, query = '') => async (dispatch) => {
 };
 
 export const getSinglePost = (id) => async (dispatch) => {
-  setLoading();
+  dispatch(setLoading());
+  dispatch(clearTrips());
 
   ajax(`http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy/${id}`)
     .pipe(

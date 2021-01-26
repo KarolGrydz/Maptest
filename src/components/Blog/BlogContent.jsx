@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import propTypes from 'prop-types';
 import { Grid, Typography, Container } from '@material-ui/core';
 
+import Preloader from './Preloader';
 import BlogTitle from './BlogTitle';
 import BlogButtonMore from './BlogButtonMore';
 import BlogDate from './BlogDate';
@@ -43,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
 
 const BlogContent = ({ posts }) => {
   const classes = useStyles();
+  console.log(posts);
+
+  if (posts === null) return <Preloader />;
 
   return (
     <Grid item xs={12} md={9}>

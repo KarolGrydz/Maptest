@@ -3,8 +3,9 @@ import returnTrip from '../../mappers/tripMapper';
 
 const getBlog = ({ blog }) => blog;
 
-export const getTrips = createSelector(getBlog, ({ trips }) =>
-  trips.map((trip) => returnTrip(trip))
+export const getTrips = createSelector(
+  getBlog,
+  ({ trips }) => trips && trips.map((trip) => returnTrip(trip))
 );
 
 export const getSingleTrip = createSelector(
