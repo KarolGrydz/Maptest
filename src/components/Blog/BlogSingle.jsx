@@ -45,6 +45,7 @@ const BlogSingle = ({ match }) => {
 
   useEffect(() => {
     let mounted = true;
+    dispatch(setLoading());
     if (mounted) dispatch(getSinglePost(match.params.id));
     return () => {
       mounted = false;

@@ -58,7 +58,7 @@ export default (state = initialState, action) => {
     case CLEAR_SINGLE_TRIP:
       return {
         ...state,
-        singleTrip: {},
+        singleTrip: null,
       };
 
     case TRIP_ERROR:

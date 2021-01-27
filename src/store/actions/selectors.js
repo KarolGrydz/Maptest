@@ -3,33 +3,21 @@ import returnTrip from '../../mappers/tripMapper';
 
 const getBlog = ({ blog }) => blog;
 
-export const getTrips = createSelector(
-  getBlog,
-  ({ trips }) => trips && trips.map((trip) => returnTrip(trip))
-);
+export const getTrips = createSelector(getBlog, ({ trips }) => trips
+  .map((trip) => returnTrip(trip)));
 
-export const getSingleTrip = createSelector(
-  getBlog,
-  ({ singleTrip }) => singleTrip
-);
+export const getSingleTrip = createSelector(getBlog, ({ singleTrip }) => singleTrip);
 
-export const getSidebarTrips = createSelector(getBlog, ({ sidebarTrips }) =>
-  sidebarTrips.map((trip) => returnTrip(trip))
-);
+export const getSidebarTrips = createSelector(getBlog, ({ sidebarTrips }) => sidebarTrips
+  .map((trip) => returnTrip(trip)));
 
-export const getAllPagesNumber = createSelector(getBlog, ({ pages }) =>
-  Number(pages)
-);
+export const getAllPagesNumber = createSelector(getBlog, ({ pages }) => Number(pages));
 
-export const getCurrentPage = createSelector(getBlog, ({ currentPage }) =>
-  Number(currentPage)
-);
+export const getCurrentPage = createSelector(getBlog, ({ currentPage }) => Number(currentPage));
 
-export const getAllPostNumber = createSelector(getBlog, ({ tripsNumber }) =>
-  Number(tripsNumber)
-);
+export const getAllPostNumber = createSelector(getBlog, ({ tripsNumber }) => Number(tripsNumber));
 
-export const getSearch = createSelector(getBlog, ({ search }) => search);
+export const getSearch = createSelector(getBlog, ({ search }) => (search));
 
 export const getLoading = createSelector(getBlog, ({ isLoading }) => isLoading);
 

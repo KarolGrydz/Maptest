@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Fade, Container, Typography } from '@material-ui/core';
 
@@ -16,7 +17,7 @@ const Title = ({ title, subTitle }) => {
   const classes = useStyles();
   return (
     <>
-      <Fade in={true} timeout={2000}>
+      <Fade in="true" timeout={2000}>
         <Container className={classes.root}>
           <Typography variant="h1">{title}</Typography>
           <Typography variant="h3">{subTitle}</Typography>
@@ -24,6 +25,11 @@ const Title = ({ title, subTitle }) => {
       </Fade>
     </>
   );
+};
+
+Title.propTypes = {
+  title: propTypes.string.isRequired,
+  subTitle: propTypes.string.isRequired,
 };
 
 export default Title;

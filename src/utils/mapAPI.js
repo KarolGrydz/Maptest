@@ -1,7 +1,7 @@
 import { of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { map, catchError } from 'rxjs/operators';
-import visited from '../constants/apiUrls';
+import { visited } from '../constants/apiUrls';
 
 export const observable$ = ajax.getJSON(visited)
   .pipe(

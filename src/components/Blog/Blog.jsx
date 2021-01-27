@@ -36,6 +36,7 @@ const Blog = () => {
 
   useEffect(() => {
     let mounted = true;
+    dispatch(setLoading());
     if (mounted) dispatch(getPosts(currentPage, search));
     return () => {
       mounted = false;
@@ -48,11 +49,7 @@ const Blog = () => {
     <Container className={classes.root}>
       <BlogChangeView />
       <Grid container>
-        {view === 'agenda' ? (
-          <BlogContent posts={trips} />
-        ) : (
-          <BlogContentTable posts={trips} />
-        )}
+        {view === 'agenda' ? <BlogContent posts={trips} /> : <BlogContentTable posts={trips} />}
         <BlogSidebar />
         <BlogPagination />
       </Grid>

@@ -29,6 +29,7 @@ const theme = {
   },
 };
 
-theme.overrides = {};
+theme.overrides = {
+};
 
 export default theme;
