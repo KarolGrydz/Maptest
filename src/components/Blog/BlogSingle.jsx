@@ -45,10 +45,11 @@ const BlogSingle = ({ match }) => {
 
   useEffect(() => {
     let mounted = true;
-    dispatch(setLoading());
     if (mounted) dispatch(getSinglePost(match.params.id));
     return () => {
       mounted = false;
+      dispatch(setLoading());
+      console.log('unmount');
     };
     // eslint-disable-next-line
   }, [match.params.id]);
@@ -64,7 +65,7 @@ const BlogSingle = ({ match }) => {
           <Grid item xs={9}>
             <div className={classes.postContainer} key={post.id}>
               <BlogTitle id={post.id} title={post.title.rendered} />
-              <BlogDate date={post.date} text="Data wyprawy: " />
+              <BlogDate date={post.date} text='Data wyprawy: ' />
               <div className={classes.postImg} />
               <div
                 className={classes.postDescription}
