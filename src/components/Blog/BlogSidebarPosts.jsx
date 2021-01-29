@@ -25,9 +25,8 @@ const BlogSidebarPosts = () => {
   const isLoading = useSelector(getLoading);
 
   useEffect(() => {
-    //useMemo
     let mounted = true;
-    if (mounted) dispatch(getSidebarPosts());
+    if (mounted && Boolean(!posts.length)) dispatch(getSidebarPosts());
     return () => {
       mounted = false;
     };
@@ -39,7 +38,7 @@ const BlogSidebarPosts = () => {
     <>
       {posts.map(({ id, title, date }) => (
         <Container key={id} className={classes.post}>
-          <BlogTitle id={id} title={title} variant='h6' />
+          <BlogTitle id={id} title={title} variant="h6" />
           <BlogDate date={date} />
         </Container>
       ))}

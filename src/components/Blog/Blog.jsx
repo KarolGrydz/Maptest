@@ -17,7 +17,7 @@ import {
   getLoading,
   getTrips,
 } from '../../store/actions/selectors';
-import { getPosts, setLoading } from '../../store/actions/blogActions';
+import { getPosts, clearTrips } from '../../store/actions/blogActions';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -39,7 +39,7 @@ const Blog = () => {
     if (mounted) dispatch(getPosts(currentPage, search));
     return () => {
       mounted = false;
-      dispatch(setLoading());
+      dispatch(clearTrips());
     };
   }, [currentPage, search]);
 

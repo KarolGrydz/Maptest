@@ -52,13 +52,15 @@ export default (state = initialState, action) => {
     case CLEAR_TRIPS:
       return {
         ...state,
-        trips: null,
+        trips: [],
+        isLoading: false,
       };
 
     case CLEAR_SINGLE_TRIP:
       return {
         ...state,
-        singleTrip: null,
+        singleTrip: {},
+        isLoading: false,
       };
 
     case TRIP_ERROR:

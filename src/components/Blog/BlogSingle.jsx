@@ -11,7 +11,10 @@ import BlogTitle from './BlogTitle';
 import BlogDate from './BlogDate';
 
 import { getLoading, getSingleTrip } from '../../store/actions/selectors';
-import { getSinglePost, setLoading } from '../../store/actions/blogActions';
+import {
+  getSinglePost,
+  clearCurrentTrip,
+} from '../../store/actions/blogActions';
 
 import ForestImage from '../../assets/img/forest.jpg';
 
@@ -48,8 +51,7 @@ const BlogSingle = ({ match }) => {
     if (mounted) dispatch(getSinglePost(match.params.id));
     return () => {
       mounted = false;
-      dispatch(setLoading());
-      console.log('unmount');
+      dispatch(clearCurrentTrip());
     };
     // eslint-disable-next-line
   }, [match.params.id]);
@@ -65,7 +67,7 @@ const BlogSingle = ({ match }) => {
           <Grid item xs={9}>
             <div className={classes.postContainer} key={post.id}>
               <BlogTitle id={post.id} title={post.title.rendered} />
-              <BlogDate date={post.date} text='Data wyprawy: ' />
+              <BlogDate date={post.date} text="Data wyprawy: " />
               <div className={classes.postImg} />
               <div
                 className={classes.postDescription}
