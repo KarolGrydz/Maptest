@@ -11,7 +11,10 @@ import BlogTitle from './BlogTitle';
 import BlogDate from './BlogDate';
 
 import { getLoading, getSingleTrip } from '../../store/actions/selectors';
-import { getSinglePost, setLoading } from '../../store/actions/blogActions';
+import {
+  getSinglePost,
+  clearCurrentTrip,
+} from '../../store/actions/blogActions';
 
 import ForestImage from '../../assets/img/forest.jpg';
 
@@ -45,10 +48,10 @@ const BlogSingle = ({ match }) => {
 
   useEffect(() => {
     let mounted = true;
-    dispatch(setLoading());
     if (mounted) dispatch(getSinglePost(match.params.id));
     return () => {
       mounted = false;
+      dispatch(clearCurrentTrip());
     };
     // eslint-disable-next-line
   }, [match.params.id]);

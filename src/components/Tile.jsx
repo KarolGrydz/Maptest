@@ -57,9 +57,9 @@ const Tile = ({ text, img, title }) => {
 };
 
 Tile.propTypes = {
-  text: propTypes.string.isRequired,
-  img: propTypes.string.isRequired,
-  title: propTypes.string.isRequired,
+  text: propTypes.string,
+  img: propTypes.string,
+  title: propTypes.string,
 };
 
 export default Tile;
