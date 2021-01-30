@@ -15,7 +15,7 @@ const menu = [
     link: '/wyprawy',
   },
   {
-    label: 'Przyjaciele',
+    label: 'Polecamy',
     id: 'przyjaciele',
     link: '/przyjaciele',
   },

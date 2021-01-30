@@ -1,15 +1,15 @@
 const theme = {
   palette: {
     primary: {
-      light: '#7d8172',
-      main: '#515547',
-      dark: '#292c20',
+      light: '#b28e67',
+      main: '#81613c',
+      dark: '#523714',
       contrastText: '#fff',
     },
     secondary: {
-      light: '#dae954',
-      main: '#a6b71b',
-      dark: '#738700',
+      light: '#d7aa79',
+      main: '#a47b4c',
+      dark: '#734f22',
       contrastText: '#000',
     },
   },
@@ -29,7 +29,6 @@ const theme = {
   },
 };
 
-theme.overrides = {
-};
+theme.overrides = {};
 
 export default theme;

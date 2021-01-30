@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   date: {
-    color: `${theme.palette.secondary.main}`,
+    color: `${theme.palette.secondary.dark}`,
     textTransform: 'uppercase',
     padding: theme.spacing(3, 0),
   },

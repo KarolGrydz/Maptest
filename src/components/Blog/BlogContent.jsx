@@ -7,7 +7,7 @@ import BlogTitle from './BlogTitle';
 import BlogButtonMore from './BlogButtonMore';
 import BlogDate from './BlogDate';
 
-import ForestImage from '../../assets/img/forest.jpg';
+import { randomImg } from '../../utils/randomImg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   postImg: {
-    backgroundImage: `url(${ForestImage})`,
+    // backgroundImage: `url(${randomImg()})`,
     backgroundColor: '#cecece',
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
@@ -50,15 +50,18 @@ const BlogContent = ({ posts }) => {
         posts.map(({ id, title, date }) => (
           <div className={classes.root} key={id}>
             <BlogTitle id={id} title={title} />
-            <BlogDate date={date} text="Data wyprawy: " />
-            <div className={classes.postImg} />
+            <BlogDate date={date} text='Data wyprawy: ' />
+            <div
+              className={classes.postImg}
+              style={{ backgroundImage: `url(${randomImg()})` }}
+            />
             <Container className={classes.description}>
-              <BlogButtonMore id={id} text="Czytaj" />
+              <BlogButtonMore id={id} text='Czytaj' />
             </Container>
           </div>
         ))
       ) : (
-        <Typography variant="h2">Brak postów</Typography>
+        <Typography variant='h2'>Brak postów</Typography>
       )}
     </Grid>
   );
