@@ -10,6 +10,7 @@ import Blog from './components/Blog/Blog';
 import BlogSingle from './components/Blog/BlogSingle';
 import About from './components/About';
 import Friends from './components/Friends';
+// import Contact from './components/Contact';
 
 import 'leaflet/dist/leaflet.css';
 

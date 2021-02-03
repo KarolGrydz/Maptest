@@ -29,8 +29,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   logo: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
+    width: 60,
+    height: 60,
   },
   menuItem: {
     display: 'flex',
