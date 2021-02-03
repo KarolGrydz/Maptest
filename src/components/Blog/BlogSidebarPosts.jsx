@@ -26,7 +26,7 @@ const BlogSidebarPosts = () => {
 
   useEffect(() => {
     let mounted = true;
-    if (mounted) dispatch(getSidebarPosts());
+    if (mounted && Boolean(!posts.length)) dispatch(getSidebarPosts());
     return () => {
       mounted = false;
     };

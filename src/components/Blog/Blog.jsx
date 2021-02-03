@@ -17,7 +17,7 @@ import {
   getLoading,
   getTrips,
 } from '../../store/actions/selectors';
-import { getPosts, setLoading } from '../../store/actions/blogActions';
+import { getPosts, clearTrips } from '../../store/actions/blogActions';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -36,12 +36,14 @@ const Blog = () => {
 
   useEffect(() => {
     let mounted = true;
-    dispatch(setLoading());
     if (mounted) dispatch(getPosts(currentPage, search));
     return () => {
       mounted = false;
+      dispatch(clearTrips());
     };
   }, [currentPage, search]);
+
+  console.log(isLoading);
 
   if (!isLoading) return <Preloader />;
 
@@ -49,7 +51,11 @@ const Blog = () => {
     <Container className={classes.root}>
       <BlogChangeView />
       <Grid container>
-        {view === 'agenda' ? <BlogContent posts={trips} /> : <BlogContentTable posts={trips} />}
+        {view === 'agenda' ? (
+          <BlogContent posts={trips} />
+        ) : (
+          <BlogContentTable posts={trips} />
+        )}
         <BlogSidebar />
         <BlogPagination />
       </Grid>

@@ -33,14 +33,14 @@ const About = () => {
   if (R.isEmpty(data)) return <Preloader />;
 
   return (
-    <Container className={classes.root}>
-      <Fade in="true" timeout={2500}>
+    <Container className={classes.root} maxWidth='md'>
+      <Fade in timeout={2500}>
         <Grid container justify="center">
           <Typography variant="h3" className={classes.title}>
             {data.title.rendered}
           </Typography>
           <Typography className={classes.text}>
-            <div dangerouslySetInnerHTML={{ __html: data.content.rendered }} />
+            <span dangerouslySetInnerHTML={{ __html: data.content.rendered }} />
           </Typography>
         </Grid>
       </Fade>

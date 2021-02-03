@@ -29,8 +29,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   logo: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
+    width: 60,
+    height: 60,
   },
   menuItem: {
     display: 'flex',
@@ -39,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     transition: 'color 100ms ease-in-out',
     '&:hover': {
-      color: `${theme.palette.secondary.main}`,
-      borderBottom: `1px solid ${theme.palette.secondary.dark}`,
+      color: `${theme.palette.secondary.contrastText}`,
+      borderBottom: `1px solid ${theme.palette.secondary.contrastText}`,
     },
   },
   menuItemMobile: {
@@ -50,8 +50,8 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     transition: 'color 100ms ease-in-out',
     '&:hover': {
-      color: `${theme.palette.secondary.main}`,
-      borderBottom: `1px solid ${theme.palette.secondary.dark}`,
+      color: `${theme.palette.secondary.contrastText}`,
+      borderBottom: `1px solid ${theme.palette.secondary.contrastText}`,
     },
   },
   divider: {
@@ -109,14 +109,14 @@ const Navbar = () => {
 
   return (
     <AppBar
-      position="sticky"
-      color="primary"
+      position='sticky'
+      color='primary'
       elevation={0}
       className={classes.root}
     >
       <Toolbar>
-        <Link to="/">
-          <Avatar alt="Logo" src={HunterLogo} className={classes.logo} />
+        <Link to='/'>
+          <Avatar alt='Logo' src={HunterLogo} className={classes.logo} />
         </Link>
         <nav className={classes.nav}>
           <div className={classes.menuNav}>
@@ -126,14 +126,31 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          <IconButton edge="end" className={classes.menuButton} color="inherit" onClick={() => setOpen(!open)}>
+          <IconButton
+            edge='end'
+            className={classes.menuButton}
+            color='inherit'
+            onClick={() => setOpen(!open)}
+          >
             <MenuIcon />
           </IconButton>
-          <Divider orientation="vertical" flexItem className={classes.divider} />
-          <Link to="https://www.youtube.com/user/grupahunter" target="blank" className={classes.ytIcon}>
+          <Divider
+            orientation='vertical'
+            flexItem
+            className={classes.divider}
+          />
+          <Link
+            to='https://www.youtube.com/user/grupahunter'
+            target='blank'
+            className={classes.ytIcon}
+          >
             <YouTube />
           </Link>
-          <Link to="https://www.facebook.com/grupahunter" target="blank" className={classes.fbIcon}>
+          <Link
+            to='https://www.facebook.com/grupahunter'
+            target='blank'
+            className={classes.fbIcon}
+          >
             <Facebook />
           </Link>
         </nav>
