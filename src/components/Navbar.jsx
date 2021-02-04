@@ -60,6 +60,14 @@ const useStyles = makeStyles((theme) => ({
     opacity: '.25',
     backgroundColor: theme.palette.primary.contrastText,
   },
+  dividerMobile: {
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    marginTop: theme.spacing(2),
+    opacity: '.25',
+    backgroundColor: theme.palette.primary.contrastText,
+    height: theme.spacing(0.1),
+  },
   fbIcon: {
     display: 'flex',
     color: blue[300],
@@ -157,6 +165,11 @@ const Navbar = () => {
       </Toolbar>
       <Collapse in={open}>
         <div className={classes.menuMobile}>
+          <Divider
+            orientation='horizontal'
+            flexItem
+            className={classes.dividerMobile}
+          />
           {menu.map(({ id, link, label }) => (
             <Link
               key={id}

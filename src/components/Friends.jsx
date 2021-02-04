@@ -8,9 +8,8 @@ import usePages from '../hooks/usePages';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: '10vh 0',
     textAlign: 'center',
-    height: '90vh',
+    minHeight: '80vh',
   },
   title: {
     padding: theme.spacing(3, 0),

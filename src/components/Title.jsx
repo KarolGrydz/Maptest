@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: theme.spacing(1),
     textAlign: 'center',
     position: 'relative',
-    zIndex: '9999',
+    zIndex: '1000',
+    textShadow: '3px 3px white',
   },
 }));
 
@@ -21,8 +22,8 @@ const Title = ({ title, subTitle }) => {
     <>
       <Fade in timeout={2000}>
         <Container className={classes.root}>
-          <Typography variant="h1">{title}</Typography>
-          <Typography variant="h3">{subTitle}</Typography>
+          <Typography variant='h1'>{title}</Typography>
+          <Typography variant='h3'>{subTitle}</Typography>
         </Container>
       </Fade>
     </>

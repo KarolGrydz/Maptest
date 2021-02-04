@@ -13,12 +13,18 @@ const useStyles = makeStyles((theme) => ({
 
   container: {
     padding: theme.spacing(8, 10, 6, 10),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(1),
+    },
   },
 
   title: {
     textAlign: 'center',
     marginBottom: theme.spacing(2),
     fontSize: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      fontSize: theme.spacing(3),
+    },
   },
 
   text: {
@@ -45,10 +51,10 @@ const Tile = ({ text, img, title }) => {
         />
       ) : (
         <Container className={classes.container}>
-          <Typography variant="h1" className={classes.title}>
+          <Typography variant='h1' className={classes.title}>
             {title}
           </Typography>
-          <Typography variant="body1" className={classes.text}>
+          <Typography variant='body1' className={classes.text}>
             {text}
           </Typography>
         </Container>
