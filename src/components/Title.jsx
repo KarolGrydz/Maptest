@@ -10,6 +10,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 0, 4, 0),
     lineHeight: theme.spacing(1),
     textAlign: 'center',
+    position: 'relative',
+    zIndex: '9999',
   },
 }));
 

@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   text: {
-    padding: theme.spacing(0, 5),
+    padding: theme.spacing(0, 2),
+    textAlign: 'justify',
   },
 
   image: {
@@ -47,7 +48,7 @@ const Tile = ({ text, img, title }) => {
           <Typography variant="h1" className={classes.title}>
             {title}
           </Typography>
-          <Typography variant="subtitle" className={classes.text}>
+          <Typography variant="body1" className={classes.text}>
             {text}
           </Typography>
         </Container>

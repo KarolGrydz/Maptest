@@ -43,8 +43,6 @@ const Blog = () => {
     };
   }, [currentPage, search]);
 
-  console.log(isLoading);
-
   if (!isLoading) return <Preloader />;
 
   return (
