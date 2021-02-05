@@ -19,7 +19,7 @@ const Preloader = () => {
 
   return (
     <div className={classes.root}>
-      <CircularProgress size={80} style={{ color: 'rgb(166, 183, 27)' }} />
+      <CircularProgress size={80} style={{ color: 'rgb(129, 97, 60)' }} />
     </div>
   );
 };
