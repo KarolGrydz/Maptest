@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import Title from './Title';
-import myIcon from '../constants/icon';
-import { observable$, filterLocation } from '../utils/mapAPI';
+import Title from '../Title';
+import myIcon from '../../constants/icon';
+import { observable$, filterLocation } from '../../utils/mapAPI';
 
 const useStyles = makeStyles((theme) => ({
   map: {
