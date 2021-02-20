@@ -9246,6 +9246,11 @@ react-leaflet@^3.0.2:
   dependencies:
     "@react-leaflet/core" "^1.0.2"
 
+react-parallax@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-parallax/-/react-parallax-3.2.0.tgz#1285c25945fd17fbb9072e5443f688bb595a3720"
+  integrity sha512-IXHYhoqXhqSdg59/9DbeGh6E8CJ8UKl0ZxyxoqpLOPQJfOtvRdud6j/XccajLo0snxRGxDpJ/oLHtIaABAlaOQ==
+
 react-redux@^7.2.2:
   version "7.2.2"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.2.tgz#03862e803a30b6b9ef8582dadcc810947f74b736"

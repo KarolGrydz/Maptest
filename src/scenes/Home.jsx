@@ -7,9 +7,7 @@ import Column from '../components/Home/Column';
 const Home = () => (
   <>
     <Movie />
-    <Container disableGutters={true}>
-      <Column />
-    </Container>
+    <Column />
     <Map />
   </>
 );
