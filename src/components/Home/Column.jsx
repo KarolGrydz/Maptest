@@ -8,8 +8,7 @@ import { randomImg } from '../../utils/randomImg';
 const useStyles = makeStyles((theme) => ({
   root: {
     background: 'black',
-    margin: theme.spacing(10, 0, 0, 0),
-    height: '60vh',
+    height: '80vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
