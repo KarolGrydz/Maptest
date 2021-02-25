@@ -1169,6 +1169,32 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fortawesome/fontawesome-common-types@^0.2.34":
+  version "0.2.34"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.34.tgz#0a8c348bb23b7b760030f5b1d912e582be4ec915"
+  integrity sha512-XcIn3iYbTEzGIxD0/dY5+4f019jIcEIWBiHc3KrmK/ROahwxmZ/s+tdj97p/5K0klz4zZUiMfUlYP0ajhSJjmA==
+
+"@fortawesome/fontawesome-svg-core@^1.2.34":
+  version "1.2.34"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.34.tgz#1d1a7c92537cbc2b8a83eef6b6d824b4b5b46b26"
+  integrity sha512-0KNN0nc5eIzaJxlv43QcDmTkDY1CqeN6J7OCGSs+fwGPdtv0yOQqRjieopBCmw+yd7uD3N2HeNL3Zm5isDleLg==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.34"
+
+"@fortawesome/free-solid-svg-icons@^5.15.2":
+  version "5.15.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.15.2.tgz#25bb035de57cf85aee8072965732368ccc8e8943"
+  integrity sha512-ZfCU+QjaFsdNZmOGmfqEWhzI3JOe37x5dF4kz9GeXvKn/sTxhqMtZ7mh3lBf76SvcYY5/GKFuyG7p1r4iWMQqw==
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.2.34"
+
+"@fortawesome/react-fontawesome@^0.1.14":
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/@fortawesome/react-fontawesome/-/react-fontawesome-0.1.14.tgz#bf28875c3935b69ce2dc620e1060b217a47f64ca"
+  integrity sha512-4wqNb0gRLVaBm/h+lGe8UfPPivcbuJ6ecI4hIgW0LjI7kzpYB9FkN0L9apbVzg+lsBdcTf0AlBtODjcSX5mmKA==
+  dependencies:
+    prop-types "^15.7.2"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -9319,10 +9345,10 @@ react-leaflet@^3.0.2:
   dependencies:
     "@react-leaflet/core" "^1.0.2"
 
-react-parallax@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/react-parallax/-/react-parallax-3.2.0.tgz#1285c25945fd17fbb9072e5443f688bb595a3720"
-  integrity sha512-IXHYhoqXhqSdg59/9DbeGh6E8CJ8UKl0ZxyxoqpLOPQJfOtvRdud6j/XccajLo0snxRGxDpJ/oLHtIaABAlaOQ==
+react-parallax@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/react-parallax/-/react-parallax-3.2.1.tgz#0c41e6e187ccf47ee6547be8d55971cdfb51d030"
+  integrity sha512-tT10KgmE2akycI3KtUR9C+wTPI57xwQT4D4Z/5kI/JT+VG4+mgv4hvRJN9zFRMs6xB/4mUPF1Kt9Gu2pwN35iw==
 
 react-redux@^7.2.2:
   version "7.2.2"

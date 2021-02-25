@@ -2,20 +2,28 @@ import React from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 import CountUp from 'react-countup';
 import { makeStyles } from '@material-ui/core/styles';
-import { Public, PhotoCamera, EmojiObjects } from '@material-ui/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faLightbulb,
+  faCameraRetro,
+  faGlobeAfrica,
+} from '@fortawesome/free-solid-svg-icons';
 import { Typography, Card, CardContent, Grid } from '@material-ui/core';
+import Fire from '../../assets/img/gora.jpg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: theme.spacing(15, 0),
+    padding: theme.spacing(15, 0),
+    background: `url(${Fire}) no-repeat center center fixed`,
+    backgroundSize: 'cover',
+    marginTop: theme.spacing(10),
   },
 
   card: {
-    minHeight: theme.spacing(40),
+    minHeight: theme.spacing(35),
     margin: theme.spacing(4),
     display: 'flex',
     justifyContent: 'center',
-    background: theme.palette.secondary.light,
   },
 
   cardContent: {
@@ -24,10 +32,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     flexDirection: 'column',
     padding: theme.spacing(1),
+    fontWeight: 'bold',
   },
 
   icon: {
-    fontSize: theme.spacing(25),
+    fontSize: theme.spacing(15),
   },
 }));
 
@@ -41,13 +50,13 @@ const Boxes = () => {
           <CardContent className={classes.cardContent}>
             <VisibilitySensor>
               {({ isVisible }) => (
-                <Typography variant='h5' align='center'>
+                <Typography variant="h5" align="center" gutterBottom={true}>
                   <CountUp end={146} start={isVisible ? 0 : 146} duration={4} />{' '}
                   wypraw udokumentowanych na naszej stronie
                 </Typography>
               )}
             </VisibilitySensor>
-            <Public className={classes.icon} />
+            <FontAwesomeIcon icon={faGlobeAfrica} className={classes.icon} />
           </CardContent>
         </Card>
       </Grid>
@@ -56,7 +65,7 @@ const Boxes = () => {
           <CardContent className={classes.cardContent}>
             <VisibilitySensor>
               {({ isVisible }) => (
-                <Typography variant='h5' align='center'>
+                <Typography variant="h5" align="center" gutterBottom={true}>
                   <CountUp
                     end={3277}
                     start={isVisible ? 0 : 3277}
@@ -66,7 +75,7 @@ const Boxes = () => {
                 </Typography>
               )}
             </VisibilitySensor>
-            <PhotoCamera className={classes.icon} />
+            <FontAwesomeIcon icon={faCameraRetro} className={classes.icon} />
           </CardContent>
         </Card>
       </Grid>
@@ -75,7 +84,7 @@ const Boxes = () => {
           <CardContent className={classes.cardContent}>
             <VisibilitySensor>
               {({ isVisible }) => (
-                <Typography variant='h5' align='center'>
+                <Typography variant="h5" align="center" gutterBottom={true}>
                   <CountUp
                     end={1000000}
                     start={isVisible ? 0 : 1000000}
@@ -85,7 +94,7 @@ const Boxes = () => {
                 </Typography>
               )}
             </VisibilitySensor>
-            <EmojiObjects className={classes.icon} />
+            <FontAwesomeIcon icon={faLightbulb} className={classes.icon} />
           </CardContent>
         </Card>
       </Grid>

@@ -11,6 +11,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    background: 'no-repeat center center fixed',
   },
 
   movie: {

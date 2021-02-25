@@ -8,7 +8,6 @@ import { randomImg } from '../../utils/randomImg';
 const useStyles = makeStyles((theme) => ({
   root: {
     background: 'black',
-    height: '80vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -31,13 +30,13 @@ const useStyles = makeStyles((theme) => ({
   text: {
     zIndex: '9999',
     color: '#fff',
+    position: 'absolute',
   },
 
   box: {
     opacity: '0.5',
     transition: 'all 500ms ease',
     overflow: 'hidden',
-    position: 'absolute',
     '&:hover': {
       opacity: '1',
     },
@@ -49,12 +48,12 @@ const Column = () => {
 
   return (
     <Grid item xs={3} className={classes.root}>
-      <Typography variant='h5' align='center' className={classes.text}>
+      <Typography variant="h5" align="center" className={classes.text}>
         Przyjaciele
       </Typography>
       <Box className={classes.box}>
-        <Link className={classes.link} to='/kim-jestesmy'>
-          <img src={randomImg()} alt='' className={classes.image} />
+        <Link className={classes.link} to="/kim-jestesmy">
+          <img src={randomImg()} alt="" className={classes.image} />
         </Link>
       </Box>
     </Grid>

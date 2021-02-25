@@ -7,12 +7,13 @@ import { Fade, Container, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(2, 0, 4, 0),
+    padding: theme.spacing(4, 0, 8, 0),
     lineHeight: theme.spacing(1),
     textAlign: 'center',
     position: 'relative',
     zIndex: '1000',
     textShadow: '3px 3px white',
+    // backgroundImage: `linear-gradient(${theme.palette.primary.light}, ${theme.palette.primary.dark})`,
   },
 }));
 
