@@ -1,23 +1,31 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
-import Title from '../Title';
+import { Box, Fade } from '@material-ui/core';
 import intro from '../../assets/video/intro.mp4';
-import logo from '../../assets/img/logo_big.bmp';
+import czacha from '../../assets/img/czacha.png';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: '90vh',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     background: 'no-repeat center center fixed',
+    position: 'relative',
   },
 
   movie: {
     position: 'absolute',
     width: '100%',
   },
+
+  skull: {
+    textAlign: 'center',
+    position: 'relative',
+    zIndex: '1000',
+    width: theme.spacing(70),
+    marginBottom: 'auto',
+  }
 }));
 
 const Movie = () => {
@@ -31,7 +39,9 @@ const Movie = () => {
         loop={true}
         src={intro}
       />
-      <Title title="Hunter" subTitle="grupa eksploracyjno-historyczna" />
+      <Fade in timeout={{ enter: 1000 }} style={{ transitionDelay: '3500ms' }}>
+        <img src={czacha} alt='logo' className={classes.skull} />
+      </Fade>
     </Box>
   );
 };

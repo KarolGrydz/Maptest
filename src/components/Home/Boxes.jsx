@@ -8,7 +8,7 @@ import {
   faCameraRetro,
   faGlobeAfrica,
 } from '@fortawesome/free-solid-svg-icons';
-import { Typography, Card, CardContent, Grid } from '@material-ui/core';
+import { Typography, Card, CardContent, Grid, Container } from '@material-ui/core';
 import Fire from '../../assets/img/gora.jpg';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +44,11 @@ const Boxes = () => {
   const classes = useStyles();
 
   return (
-    <Grid container className={classes.root}>
+    <div className={classes.root}>
+
+    <Container >
+
+    <Grid container >
       <Grid item xs={4}>
         <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
@@ -70,7 +74,7 @@ const Boxes = () => {
                     end={3277}
                     start={isVisible ? 0 : 3277}
                     duration={4}
-                  />{' '}
+                    />{' '}
                   zdjęć w galeriach
                 </Typography>
               )}
@@ -89,7 +93,7 @@ const Boxes = () => {
                     end={1000000}
                     start={isVisible ? 0 : 1000000}
                     duration={4}
-                  />{' '}
+                    />{' '}
                   pomysłów na następne wyprawy
                 </Typography>
               )}
@@ -99,6 +103,8 @@ const Boxes = () => {
         </Card>
       </Grid>
     </Grid>
+    </Container>
+              </div>
   );
 };
 
