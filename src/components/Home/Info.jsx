@@ -3,7 +3,7 @@ import { Typography } from '@material-ui/core';
 
 const Home = () => (
   <>
-    <Typography variant="h3">Informacja o organizowaniu wycieczek</Typography>
+    <Typography variant="h5" align="center" style={{margin: '50px 0'}}>Istnieje możliwość orgraniacji imprez dla grup i osób prywatnych</Typography>
   </>
 );
 
