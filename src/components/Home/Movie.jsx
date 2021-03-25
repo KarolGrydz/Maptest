@@ -23,9 +23,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     position: 'relative',
     zIndex: '1000',
-    width: theme.spacing(70),
+    width: theme.spacing(40),
     marginBottom: 'auto',
-  }
+    marginTop: theme.spacing(5),
+  },
 }));
 
 const Movie = () => {
@@ -40,7 +41,7 @@ const Movie = () => {
         src={intro}
       />
       <Fade in timeout={{ enter: 1000 }} style={{ transitionDelay: '3500ms' }}>
-        <img src={czacha} alt='logo' className={classes.skull} />
+        <img src={czacha} alt="logo" className={classes.skull} />
       </Fade>
     </Box>
   );

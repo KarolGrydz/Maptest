@@ -9,23 +9,17 @@ import { Grid } from '@material-ui/core';
 import { Parallax } from 'react-parallax';
 import Fire from '../assets/img/fire.jpg';
 
-const arr = [0, 1, 2, 3];
-
 const Home = () => (
   <>
     <Movie />
     <Boxes />
+    <Info />
     <Title title="Linki" subTitle="" />
-    <Grid container>
-      {arr.map((id) => (
-        <Column key={id} />
-      ))}
-    </Grid>
+    <Column />
     <Grid>
       <Title title="Mapa" subTitle="Wszystkie nasze wyprawy" />
       <Map />
     </Grid>
-    <Info />
   </>
 );
 

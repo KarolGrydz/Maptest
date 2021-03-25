@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Box } from '@material-ui/core';
-
-import { randomImg } from '../../utils/randomImg';
+import columns from '../../constants/columns';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   text: {
-    zIndex: '9999',
+    zIndex: '1000',
     color: '#fff',
     position: 'absolute',
   },
@@ -47,15 +46,19 @@ const Column = () => {
   const classes = useStyles();
 
   return (
-    <Grid item xs={3} className={classes.root}>
-      <Typography variant="h5" align="center" className={classes.text}>
-        Przyjaciele
-      </Typography>
-      <Box className={classes.box}>
-        <Link className={classes.link} to="/kim-jestesmy">
-          <img src={randomImg()} alt="" className={classes.image} />
-        </Link>
-      </Box>
+    <Grid container>
+      {columns.map(({ label, id, link, img }) => (
+        <Grid item xs={3} className={classes.root} key={id}>
+          <Typography variant="h5" align="center" className={classes.text}>
+            {label}
+          </Typography>
+          <Box className={classes.box}>
+            <Link className={classes.link} to={link}>
+              <img src={img} alt={label} className={classes.image} />
+            </Link>
+          </Box>
+        </Grid>
+      ))}
     </Grid>
   );
 };
