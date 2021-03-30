@@ -72,6 +72,38 @@ export const getSinglePost = (id) => async (dispatch) => {
     )
     .subscribe({
       next: (res) => {
+        const dataContent = res.response.content.rendered;
+        const data = {
+          ...res.response,
+          content: dataContent.slice(
+            dataContent.search('<p>'),
+            dataContent.search('</p>') + 4
+          ),
+        };
+        console.log(data);
+        dispatch({
+          type: GET_SINGLE_TRIP,
+          payload: res.response,
+        });
+      },
+      error: (err) => {
+        dispatch({
+          type: TRIP_ERROR,
+          payload: err.message,
+        });
+      },
+    });
+};
+
+//test obrazków
+export const getSingleGallery = (id) => async (dispatch) => {
+  ajax(`http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy/${id}`)
+    .pipe(
+      map((response) => response),
+      catchError((error) => of(error))
+    )
+    .subscribe({
+      next: (res) => {
         dispatch({
           type: GET_SINGLE_TRIP,
           payload: res.response,

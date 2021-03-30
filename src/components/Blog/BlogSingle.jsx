@@ -67,6 +67,12 @@ const BlogSingle = ({ match }) => {
           <Grid item xs={9}>
             <div className={classes.postContainer} key={post.id}>
               <BlogTitle id={post.id} title={post.title.rendered} />
+              {/* {console.log(
+                post.content.rendered.slice(
+                  post.content.rendered.search('<p>'),
+                  post.content.rendered.search('</p>') + 4
+                )
+              )} */}
               <BlogDate date={post.date} text="Data wyprawy: " />
               <div className={classes.postImg} />
               <div
