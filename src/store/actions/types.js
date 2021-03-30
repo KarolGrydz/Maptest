@@ -1,5 +1,6 @@
 export const GET_TRIPS = 'GET_TRIPS';
 export const GET_SINGLE_TRIP = 'GET_SINGLE_TRIP';
+export const GET_SINGLE_GALLERY = 'GET_SINGLE_GALLERY';
 export const CLEAR_SINGLE_TRIP = 'CLEAR_SINGLE_TRIP';
 export const CLEAR_TRIPS = 'CLEAR_TRIPS';
 export const SET_LOADING = 'SET_LOADING';

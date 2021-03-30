@@ -1,6 +1,7 @@
 import {
   GET_TRIPS,
   GET_SINGLE_TRIP,
+  GET_SINGLE_GALLERY,
   CLEAR_TRIPS,
   CLEAR_SINGLE_TRIP,
   TRIP_ERROR,
@@ -39,7 +40,14 @@ export default (state = initialState, action) => {
     case GET_SINGLE_TRIP:
       return {
         ...state,
-        singleTrip: action.payload,
+        singleTrip: { ...state.singleTrip, ...action.payload },
+        isLoading: true,
+      };
+
+    case GET_SINGLE_GALLERY:
+      return {
+        ...state,
+        singleTrip: { ...state.singleTrip, gallery: action.payload },
         isLoading: true,
       };
 

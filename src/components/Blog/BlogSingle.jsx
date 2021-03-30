@@ -14,6 +14,7 @@ import { getLoading, getSingleTrip } from '../../store/actions/selectors';
 import {
   getSinglePost,
   clearCurrentTrip,
+  getSingleGallery,
 } from '../../store/actions/blogActions';
 
 import ForestImage from '../../assets/img/forest.jpg';
@@ -49,6 +50,7 @@ const BlogSingle = ({ match }) => {
   useEffect(() => {
     let mounted = true;
     if (mounted) dispatch(getSinglePost(match.params.id));
+    if (mounted) dispatch(getSingleGallery(match.params.id));
     return () => {
       mounted = false;
       dispatch(clearCurrentTrip());
@@ -56,29 +58,24 @@ const BlogSingle = ({ match }) => {
     // eslint-disable-next-line
   }, [match.params.id]);
 
+  console.log(post);
   if (!isLoading) return <Preloader />;
 
   return (
     <Container className={classes.root}>
-      {isEmpty(post) ? (
+      {post.title === undefined ? (
         <Preloader />
       ) : (
         <Grid container>
           <Grid item xs={9}>
             <div className={classes.postContainer} key={post.id}>
               <BlogTitle id={post.id} title={post.title.rendered} />
-              {/* {console.log(
-                post.content.rendered.slice(
-                  post.content.rendered.search('<p>'),
-                  post.content.rendered.search('</p>') + 4
-                )
-              )} */}
-              <BlogDate date={post.date} text="Data wyprawy: " />
+              <BlogDate date={post.date} text='Data wyprawy: ' />
               <div className={classes.postImg} />
               <div
                 className={classes.postDescription}
                 dangerouslySetInnerHTML={{
-                  __html: post.content.rendered,
+                  __html: post.content,
                 }}
               />
             </div>
