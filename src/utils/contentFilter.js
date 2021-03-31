@@ -4,7 +4,7 @@ const contentFilter = (res) => {
     ...res.response,
     content: dataContent.slice(
       dataContent.search('<p>'),
-      dataContent.search('</p>') + 4
+      dataContent.search('<style type="text/css">')
     ),
   };
   return data;

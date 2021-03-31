@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import propTypes from 'prop-types';
-import { isEmpty } from 'ramda';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid } from '@material-ui/core';
@@ -9,6 +8,7 @@ import Preloader from './Preloader';
 import BlogSidebar from './BlogSidebar';
 import BlogTitle from './BlogTitle';
 import BlogDate from './BlogDate';
+import BlogSingleGallery from './BlogSingleGallery';
 
 import { getLoading, getSingleTrip } from '../../store/actions/selectors';
 import {
@@ -58,7 +58,7 @@ const BlogSingle = ({ match }) => {
     // eslint-disable-next-line
   }, [match.params.id]);
 
-  console.log(post);
+  // console.log(post);
   if (!isLoading) return <Preloader />;
 
   return (
@@ -70,7 +70,7 @@ const BlogSingle = ({ match }) => {
           <Grid item xs={9}>
             <div className={classes.postContainer} key={post.id}>
               <BlogTitle id={post.id} title={post.title.rendered} />
-              <BlogDate date={post.date} text='Data wyprawy: ' />
+              <BlogDate date={post.date} text="Data wyprawy: " />
               <div className={classes.postImg} />
               <div
                 className={classes.postDescription}
@@ -79,6 +79,7 @@ const BlogSingle = ({ match }) => {
                 }}
               />
             </div>
+            <BlogSingleGallery gallery={post.gallery} />
           </Grid>
           <BlogSidebar />
         </Grid>

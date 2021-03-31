@@ -91,13 +91,16 @@ export const getSinglePost = (id) => async (dispatch) => {
 
 //test obrazków
 export const getSingleGallery = (id) => async (dispatch) => {
-  ajax(`https://hunter.polkowice.pl/wp-json/wp/v2/media?parent=${id}`)
+  ajax(
+    `https://hunter.polkowice.pl/wp-json/wp/v2/media?per_page=100&parent=${id}`
+  )
     .pipe(
       map((response) => response),
       catchError((error) => of(error))
     )
     .subscribe({
       next: (res) => {
+        console.log(res.response);
         dispatch({
           type: GET_SINGLE_GALLERY,
           payload: res.response,
