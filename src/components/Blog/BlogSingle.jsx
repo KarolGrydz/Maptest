@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import propTypes from 'prop-types';
-import { isEmpty } from 'ramda';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid } from '@material-ui/core';
@@ -9,11 +8,13 @@ import Preloader from './Preloader';
 import BlogSidebar from './BlogSidebar';
 import BlogTitle from './BlogTitle';
 import BlogDate from './BlogDate';
+import BlogSingleGallery from './BlogSingleGallery';
 
 import { getLoading, getSingleTrip } from '../../store/actions/selectors';
 import {
   getSinglePost,
   clearCurrentTrip,
+  getSingleGallery,
 } from '../../store/actions/blogActions';
 
 import ForestImage from '../../assets/img/forest.jpg';
@@ -49,6 +50,7 @@ const BlogSingle = ({ match }) => {
   useEffect(() => {
     let mounted = true;
     if (mounted) dispatch(getSinglePost(match.params.id));
+    if (mounted) dispatch(getSingleGallery(match.params.id));
     return () => {
       mounted = false;
       dispatch(clearCurrentTrip());
@@ -56,11 +58,12 @@ const BlogSingle = ({ match }) => {
     // eslint-disable-next-line
   }, [match.params.id]);
 
+  // console.log(post);
   if (!isLoading) return <Preloader />;
 
   return (
     <Container className={classes.root}>
-      {isEmpty(post) ? (
+      {post.title === undefined ? (
         <Preloader />
       ) : (
         <Grid container>
@@ -72,10 +75,11 @@ const BlogSingle = ({ match }) => {
               <div
                 className={classes.postDescription}
                 dangerouslySetInnerHTML={{
-                  __html: post.content.rendered,
+                  __html: post.content,
                 }}
               />
             </div>
+            <BlogSingleGallery gallery={post.gallery} />
           </Grid>
           <BlogSidebar />
         </Grid>

@@ -1,10 +1,12 @@
 import { of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { map, catchError } from 'rxjs/operators';
+import contentFilter from '../../utils/contentFilter';
 
 import {
   GET_TRIPS,
   GET_SINGLE_TRIP,
+  GET_SINGLE_GALLERY,
   CLEAR_TRIPS,
   CLEAR_SINGLE_TRIP,
   TRIP_ERROR,
@@ -72,8 +74,35 @@ export const getSinglePost = (id) => async (dispatch) => {
     )
     .subscribe({
       next: (res) => {
+        const data = contentFilter(res);
         dispatch({
           type: GET_SINGLE_TRIP,
+          payload: data,
+        });
+      },
+      error: (err) => {
+        dispatch({
+          type: TRIP_ERROR,
+          payload: err.message,
+        });
+      },
+    });
+};
+
+//test obrazków
+export const getSingleGallery = (id) => async (dispatch) => {
+  ajax(
+    `https://hunter.polkowice.pl/wp-json/wp/v2/media?per_page=100&parent=${id}`
+  )
+    .pipe(
+      map((response) => response),
+      catchError((error) => of(error))
+    )
+    .subscribe({
+      next: (res) => {
+        console.log(res.response);
+        dispatch({
+          type: GET_SINGLE_GALLERY,
           payload: res.response,
         });
       },
