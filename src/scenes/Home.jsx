@@ -5,6 +5,7 @@ import Column from '../components/Home/Column';
 import Boxes from '../components/Home/Boxes';
 import Title from '../components/Title';
 import Info from '../components/Home/Info';
+import Facebook from '../components/Home/Facebook';
 import { Grid } from '@material-ui/core';
 import { Parallax } from 'react-parallax';
 import Fire from '../assets/img/fire.jpg';
@@ -20,6 +21,7 @@ const Home = () => (
       <Title title="Mapa" subTitle="Wszystkie nasze wyprawy" />
       <Map />
     </Grid>
+    <Facebook />
   </>
 );
 
