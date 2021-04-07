@@ -4,7 +4,6 @@ import CountUp from 'react-countup';
 import { makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faLightbulb,
   faCameraRetro,
   faGlobeAfrica,
 } from '@fortawesome/free-solid-svg-icons';
@@ -22,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(15, 0),
     background: `url(${Fire}) no-repeat center center fixed`,
     backgroundSize: 'cover',
-    marginTop: theme.spacing(10),
   },
 
   card: {
@@ -58,7 +56,7 @@ const Boxes = () => {
               <CardContent className={classes.cardContent}>
                 <VisibilitySensor>
                   {({ isVisible }) => (
-                    <Typography variant="h5" align="center" gutterBottom={true}>
+                    <Typography variant='h5' align='center' gutterBottom={true}>
                       <CountUp
                         end={146}
                         start={isVisible ? 0 : 146}
@@ -81,7 +79,7 @@ const Boxes = () => {
               <CardContent className={classes.cardContent}>
                 <VisibilitySensor>
                   {({ isVisible }) => (
-                    <Typography variant="h5" align="center" gutterBottom={true}>
+                    <Typography variant='h5' align='center' gutterBottom={true}>
                       <CountUp
                         end={3277}
                         start={isVisible ? 0 : 3277}

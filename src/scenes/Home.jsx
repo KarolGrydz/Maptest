@@ -13,12 +13,12 @@ import Fire from '../assets/img/fire.jpg';
 const Home = () => (
   <>
     <Movie />
-    <Boxes />
     <Info />
-    <Title title="Linki" subTitle="" />
+    <Boxes />
+    <Title title='Linki' subTitle='' />
     <Column />
     <Grid>
-      <Title title="Mapa" subTitle="Wszystkie nasze wyprawy" />
+      <Title title='Mapa' subTitle='Wszystkie nasze wyprawy' />
       <Map />
     </Grid>
     <Facebook />

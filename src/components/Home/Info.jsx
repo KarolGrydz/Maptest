@@ -13,6 +13,14 @@ import Forest from '../../assets/img/forest.jpg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    paddingTop: theme.spacing(10),
+  },
+
+  bgColor: {
+    backgroundColor: theme.palette.primary.light,
+  },
+
+  grid: {
     padding: theme.spacing(5),
   },
 
@@ -21,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   title: {
-    padding: theme.spacing(4, 0),
+    padding: theme.spacing(4, 0, 4, 2),
     fontWeight: 'bold',
   },
 
@@ -35,74 +43,86 @@ const Home = () => {
   const classes = useStyles();
 
   return (
-    <Container>
-      <Grid container className={classes.root}>
-        <Grid item xs={8}>
-          <Typography className={classes.title} variant="h5">
-            Ostatnie wyprawy
-          </Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <Typography className={classes.title} variant="h5">
-            Informacje o organizowaniu imprez
-          </Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <Card className={classes.cardRoot}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.cardMedia}
-                image={Forest}
-                title="Contemplative Reptile"
-              />
+    <Grid className={classes.bgColor}>
+      <Container className={classes.root}>
+        <Grid container className={classes.grid}>
+          <Grid item xs={8}>
+            <Typography className={classes.title} variant='h5'>
+              Ostatnie wyprawy
+            </Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <Typography className={classes.title} variant='h5'>
+              Informacje o organizowaniu imprez
+            </Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <Card className={classes.cardRoot}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image={Forest}
+                  title='Contemplative Reptile'
+                />
+                <CardContent>
+                  <Typography gutterBottom variant='h5' component='h2'>
+                    Jakaś ostatnia wyprawa
+                  </Typography>
+                  <Typography
+                    variant='body2'
+                    color='textSecondary'
+                    component='p'
+                  >
+                    Lizards are a widespread group of squamate reptiles, with
+                    over 6,000 species, ranging across all continents except
+                    Antarctica
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item xs={4}>
+            <Card className={classes.cardRoot}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image={Forest}
+                  title='Contemplative Reptile'
+                />
+                <CardContent>
+                  <Typography gutterBottom variant='h5' component='h2'>
+                    Jakaś ostatnia wyprawa
+                  </Typography>
+                  <Typography
+                    variant='body2'
+                    color='textSecondary'
+                    component='p'
+                  >
+                    Lizards are a widespread group of squamate reptiles, with
+                    over 6,000 species, ranging across all continents except
+                    Antarctica
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item xs={4}>
+            <Card className={classes.cardRoot}>
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Jakaś ostatnia wyprawa
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
+                <Typography
+                  variant='h5'
+                  align='center'
+                  style={{ margin: '50px 0' }}
+                >
+                  Informacja o organizowaniu imprez <br /> dla grup i osób
+                  prywatnych
                 </Typography>
               </CardContent>
-            </CardActionArea>
-          </Card>
+            </Card>
+          </Grid>
         </Grid>
-        <Grid item xs={4}>
-          <Card className={classes.cardRoot}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.cardMedia}
-                image={Forest}
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Jakaś ostatnia wyprawa
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Grid>
-        <Grid item xs={4}>
-          <Card className={classes.cardRoot}>
-            <CardContent>
-              <Typography
-                variant="h5"
-                align="center"
-                style={{ margin: '50px 0' }}
-              >
-                Informacja o organizowaniu imprez <br /> dla grup i osób
-                prywatnych
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </Grid>
   );
 };
 

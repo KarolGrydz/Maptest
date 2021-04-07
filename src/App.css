@@ -1,0 +1,112 @@
+.efbl_feed_wraper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+}
+
+.efbl-thumbnail-skin {
+  background: #fff;
+  border: #dee2e6 solid 1px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.efbl-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.efbl-thumbnail-skin .efbl-thumbnail-wrapper .efbl-thumbnail-col {
+  border-right: #dee2e6 solid 1px;
+}
+
+.efbl-col-4 {
+  flex: 0 0 33.3333333333%;
+  max-width: 33.3333333333%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.efbl-thumbnail-skin .efbl-thumbnail-wrapper .efbl-thumbnail-col a {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-decoration: none;
+}
+
+.efbl-thumbnail-skin
+  .efbl-thumbnail-wrapper
+  .efbl-thumbnail-col
+  a
+  .efbl-overlay {
+  position: absolute;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.459);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  color: #fff;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+.efbl-thumbnail-skin
+  .efbl-thumbnail-wrapper
+  .efbl-thumbnail-col
+  a
+  .efbl-overlay
+  .efbl-plus {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-size: 20px;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+html body .efbl_feed_wraper .efbl-story-wrapper .efbl-thumbnail-wrapper a img {
+  outline: #dee2e6 solid 1px;
+  width: 100%;
+  background: black;
+}
+
+.efbl-col-8 {
+  flex: 0 0 66.6666666667%;
+  max-width: 66.6666666667%;
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.efbl-thumbnail-skin .efbl-feed-content > .efbl-d-flex .efbl-profile-image {
+  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 1px #dee2e6;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.efbl-profile-title h2 {
+  font-size: 20px;
+  margin: 0px;
+  padding: 0;
+}
+
+.efbl-thumbnail-skin .efbl-feed-content .description > * {
+  font-size: 14px;
+}

@@ -12,7 +12,7 @@ import { blue, red } from '@material-ui/core/colors';
 import Collapse from '@material-ui/core/Collapse';
 
 import menu from '../constants/menu';
-import HunterLogo from '../assets/img/logo.jpg';
+import HunterLogo from '../assets/img/czacha2.jpg';
 
 const useStyles = makeStyles((theme) => ({
   root: {

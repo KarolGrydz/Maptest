@@ -7,7 +7,7 @@ import { observable$, filterLocation } from '../../utils/mapAPI';
 
 const useStyles = makeStyles((theme) => ({
   map: {
-    height: '400px',
+    height: '500px',
     marginBottom: theme.spacing(5),
   },
   menuItem: {
@@ -38,7 +38,7 @@ const Map = () => {
         [49.80811058490771, 23.563262000113138],
       ]}
     >
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <TileLayer url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' />
       {elements.length
         ? elements.map(({ location, id, title }) => (
             <React.Fragment key={id}>
@@ -46,7 +46,7 @@ const Map = () => {
                 <Popup>
                   <Link
                     key={id}
-                    target="blank"
+                    target='blank'
                     className={classes.menuItem}
                     to={`/wyprawy/${id}`}
                   >

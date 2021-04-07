@@ -1,0 +1,102 @@
+{
+  "id": 5012,
+  "date": "2020-02-27T12:46:31",
+  "date_gmt": "2020-02-27T11:46:31",
+  "guid": {
+    "rendered": "http://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147.jpg"
+  },
+  "modified": "2021-04-03T12:47:59",
+  "modified_gmt": "2021-04-03T10:47:59",
+  "slug": "imag2147",
+  "status": "inherit",
+  "type": "attachment",
+  "link": "https://hunter.polkowice.pl/wyprawy/u-boot-h-m-s-otus-w-sassnitz/imag2147/",
+  "title": { "rendered": "2131" },
+  "author": 2,
+  "comment_status": "open",
+  "ping_status": "closed",
+  "template": "",
+  "meta": [],
+  "acf": [],
+  "description": {
+    "rendered": "<p class=\"attachment\"><a href='https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147.jpg'><img width=\"700\" height=\"525\" src=\"https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147-700x525.jpg\" class=\"attachment-medium size-medium\" alt=\"\" loading=\"lazy\" /></a></p>\n"
+  },
+  "caption": { "rendered": "" },
+  "alt_text": "",
+  "media_type": "image",
+  "mime_type": "image/jpeg",
+  "media_details": {
+    "width": 700,
+    "height": 525,
+    "file": "2020/02/IMAG2147.jpg",
+    "sizes": {
+      "thumbnail": {
+        "file": "IMAG2147-160x160.jpg",
+        "width": 160,
+        "height": 160,
+        "mime_type": "image/jpeg",
+        "source_url": "https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147-160x160.jpg"
+      },
+      "medium": {
+        "file": "IMAG2147-700x525.jpg",
+        "width": 700,
+        "height": 525,
+        "mime_type": "image/jpeg",
+        "source_url": "https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147-700x525.jpg"
+      },
+      "large": {
+        "file": "IMAG2147-700x525.jpg",
+        "width": 700,
+        "height": 525,
+        "mime_type": "image/jpeg",
+        "source_url": "https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147-700x525.jpg"
+      },
+      "full": {
+        "file": "IMAG2147.jpg",
+        "width": 700,
+        "height": 525,
+        "mime_type": "image/jpeg",
+        "source_url": "https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147.jpg"
+      }
+    },
+    "image_meta": {
+      "aperture": "2",
+      "credit": "",
+      "camera": "HTC U Play",
+      "caption": "",
+      "created_timestamp": "1567271958",
+      "copyright": "",
+      "focal_length": "2.65",
+      "iso": "100",
+      "shutter_speed": "0.002068",
+      "title": "",
+      "orientation": "1",
+      "keywords": []
+    }
+  },
+  "post": 5004,
+  "source_url": "https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147.jpg",
+  "_links": {
+    "self": [
+      { "href": "https://hunter.polkowice.pl/wp-json/wp/v2/media/5012" }
+    ],
+    "collection": [
+      { "href": "https://hunter.polkowice.pl/wp-json/wp/v2/media" }
+    ],
+    "about": [
+      { "href": "https://hunter.polkowice.pl/wp-json/wp/v2/types/attachment" }
+    ],
+    "author": [
+      {
+        "embeddable": true,
+        "href": "https://hunter.polkowice.pl/wp-json/wp/v2/users/2"
+      }
+    ],
+    "replies": [
+      {
+        "embeddable": true,
+        "href": "https://hunter.polkowice.pl/wp-json/wp/v2/comments?post=5012"
+      }
+    ]
+  }
+}

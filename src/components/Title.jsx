@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { Fade, Container, Typography } from '@material-ui/core';
+import { Fade, Container, Typography, Grid } from '@material-ui/core';
 
 // import '../../assets/fonts/fonts.css';
 
@@ -15,19 +15,26 @@ const useStyles = makeStyles((theme) => ({
     textShadow: '3px 3px white',
     // backgroundImage: `linear-gradient(${theme.palette.primary.light}, ${theme.palette.primary.dark})`,
   },
+
+  bgColor: {
+    background: `linear-gradient(
+      ${theme.palette.primary.light},
+      ${theme.palette.primary.dark}
+    )`,
+  },
 }));
 
 const Title = ({ title, subTitle }) => {
   const classes = useStyles();
   return (
-    <>
+    <Grid className={classes.bgColor}>
       <Fade in timeout={{ enter: 1000 }} style={{ transitionDelay: '3500ms' }}>
         <Container className={classes.root}>
-          <Typography variant="h1">{title}</Typography>
-          <Typography variant="h3">{subTitle}</Typography>
+          <Typography variant='h1'>{title}</Typography>
+          <Typography variant='h3'>{subTitle}</Typography>
         </Container>
       </Fade>
-    </>
+    </Grid>
   );
 };
 
