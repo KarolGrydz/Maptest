@@ -1,102 +1,129 @@
+// dino wordpress 
 {
-  "id": 5012,
-  "date": "2020-02-27T12:46:31",
-  "date_gmt": "2020-02-27T11:46:31",
-  "guid": {
-    "rendered": "http://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147.jpg"
-  },
-  "modified": "2021-04-03T12:47:59",
-  "modified_gmt": "2021-04-03T10:47:59",
-  "slug": "imag2147",
-  "status": "inherit",
-  "type": "attachment",
-  "link": "https://hunter.polkowice.pl/wyprawy/u-boot-h-m-s-otus-w-sassnitz/imag2147/",
-  "title": { "rendered": "2131" },
-  "author": 2,
-  "comment_status": "open",
-  "ping_status": "closed",
-  "template": "",
-  "meta": [],
-  "acf": [],
-  "description": {
-    "rendered": "<p class=\"attachment\"><a href='https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147.jpg'><img width=\"700\" height=\"525\" src=\"https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147-700x525.jpg\" class=\"attachment-medium size-medium\" alt=\"\" loading=\"lazy\" /></a></p>\n"
-  },
-  "caption": { "rendered": "" },
-  "alt_text": "",
-  "media_type": "image",
-  "mime_type": "image/jpeg",
-  "media_details": {
-    "width": 700,
-    "height": 525,
-    "file": "2020/02/IMAG2147.jpg",
-    "sizes": {
-      "thumbnail": {
-        "file": "IMAG2147-160x160.jpg",
-        "width": 160,
-        "height": 160,
-        "mime_type": "image/jpeg",
-        "source_url": "https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147-160x160.jpg"
+  "request": [],
+  "markers": [
+    {
+      "map_id": "1",
+      "address": "<strong>ALEKSANDR\u00d3W KUJAWSKI<\/strong><span> ul. S\u0142owackiego 36<\/span><span> 87-700<\/span>\"\"",
+      "description": "<span>Godziny otwarcia:<\/span><span>pon. - sob. 6:00 - 23:00<\/span><span>niedziela handlowa 6:00 - 23:00<\/span>\"\"",
+      "pic": "",
+      "link": "",
+      "icon": {
+        "url": "\/wp-content\/uploads\/2018\/01\/marker.png",
+        "retina": false
       },
-      "medium": {
-        "file": "IMAG2147-700x525.jpg",
-        "width": 700,
-        "height": 525,
-        "mime_type": "image/jpeg",
-        "source_url": "https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147-700x525.jpg"
-      },
-      "large": {
-        "file": "IMAG2147-700x525.jpg",
-        "width": 700,
-        "height": 525,
-        "mime_type": "image/jpeg",
-        "source_url": "https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147-700x525.jpg"
-      },
-      "full": {
-        "file": "IMAG2147.jpg",
-        "width": 700,
-        "height": 525,
-        "mime_type": "image/jpeg",
-        "source_url": "https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147.jpg"
-      }
-    },
-    "image_meta": {
-      "aperture": "2",
-      "credit": "",
-      "camera": "HTC U Play",
-      "caption": "",
-      "created_timestamp": "1567271958",
-      "copyright": "",
-      "focal_length": "2.65",
-      "iso": "100",
-      "shutter_speed": "0.002068",
+      "lat": "52.867442",
+      "lng": "18.705316",
+      "anim": "0",
       "title": "",
-      "orientation": "1",
-      "keywords": []
+      "infoopen": "0",
+      "category": "0",
+      "approved": "1",
+      "retina": "0",
+      "type": "0",
+      "did": "",
+      "other_data": "",
+      "sticky": "0",
+      "id": "1",
+      "categories": [],
+      "custom_field_data": [],
+      "custom_fields_html": ""
     }
-  },
-  "post": 5004,
-  "source_url": "https://hunter.polkowice.pl/wp-content/uploads/2020/02/IMAG2147.jpg",
-  "_links": {
-    "self": [
-      { "href": "https://hunter.polkowice.pl/wp-json/wp/v2/media/5012" }
-    ],
-    "collection": [
-      { "href": "https://hunter.polkowice.pl/wp-json/wp/v2/media" }
-    ],
-    "about": [
-      { "href": "https://hunter.polkowice.pl/wp-json/wp/v2/types/attachment" }
-    ],
-    "author": [
-      {
-        "embeddable": true,
-        "href": "https://hunter.polkowice.pl/wp-json/wp/v2/users/2"
-      }
-    ],
-    "replies": [
-      {
-        "embeddable": true,
-        "href": "https://hunter.polkowice.pl/wp-json/wp/v2/comments?post=5012"
-      }
-    ]
-  }
+  ]
 }
+// netto json
+[
+  {
+    "address": {
+      "city": "Legnica",
+      "street": "Stefana Czarnieckiego 37",
+      "zip": "59-200",
+      "country": "PL",
+      "extra": null
+    },
+    "attributes": {},
+    "coordinates": [
+      16.1797867,
+      51.21047
+    ],
+    "hours": [
+      {
+        "close": "2021-04-08T21:00:00",
+        "open": "2021-04-08T06:00:00",
+        "closed": false,
+        "date": "2021-04-08T00:00:00",
+      },
+      {
+        "close": "2021-04-09T22:00:00",
+        "open": "2021-04-09T06:00:00",
+        "closed": false,
+        "date": "2021-04-09T00:00:00",
+      },
+      {
+        "close": "2021-04-10T22:00:00",
+        "open": "2021-04-10T06:00:00",
+        "closed": false,
+        "date": "2021-04-10T00:00:00",
+      },
+      {
+        "close": null,
+        "open": null,
+        "closed": true,
+        "date": "2021-04-11T00:00:00",
+      },
+      {
+        "close": "2021-04-12T21:00:00",
+        "open": "2021-04-12T06:00:00",
+        "closed": false,
+        "date": "2021-04-12T00:00:00",
+      },
+      {
+        "close": "2021-04-13T21:00:00",
+        "open": "2021-04-13T06:00:00",
+        "closed": false,
+        "date": "2021-04-13T00:00:00",
+      },
+      {
+        "close": "2021-04-14T21:00:00",
+        "open": "2021-04-14T06:00:00",
+        "closed": false,
+        "date": "2021-04-14T00:00:00",
+      }
+    ],
+    "id": "7d74540f-21ea-4ef9-9812-ba4a40a86012",
+    "name": "Netto Legnica",
+    "type": "Point",
+    "url": "/sklepy/legnica/stefana-czarnieckiego-37/7d74540f21ea4ef99812ba4a40a86012",
+    "phoneNumber": null,
+    "modified": "0001-01-01T00:00:00",
+    "sapSiteId": null,
+    "storeSchedule": null,
+    "brand": null,
+    "distance_km": 0.0
+  }
+]
+// kaufi
+[
+  {
+    "n": "PL1060",
+    "slf": "MeatService,CheeseService,SausageService,FishService,PoultryService,SnackStand,DelicatessenService",
+    "lat": "51.122000",
+    "lng": "16.989872",
+    "cn": "Kaufland Wrocław Gądów",
+    "p": "800 300 062",
+    "pc": "52-204",
+    "sn": "ul. Legnicka 62",
+    "t": "Wrocław",
+    "sod": [
+      "2021-04-11|00:00|00:00"
+    ],
+    "wod": [
+      "Monday|06:00|23:00",
+      "Tuesday|06:00|23:00",
+      "Wednesday|06:00|23:00",
+      "Thursday|06:00|23:00",
+      "Friday|06:00|23:00",
+      "Saturday|06:00|23:00"
+    ],
+    "friendlyUrl": "wroclaw-gadow-1060"
+  },
