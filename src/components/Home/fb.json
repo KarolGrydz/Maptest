@@ -127,3 +127,44 @@
     ],
     "friendlyUrl": "wroclaw-gadow-1060"
   },
+  {
+    "id": "273",
+    "mtime": "2020-03-07 16:34:34",
+    "goldid": "34225",
+    "uuid": null,
+    "name": "Podd\u0119bice",
+    "webname": "",
+    "urlname": "poddebice-ul-leczycka-17-19",
+    "status": "0",
+    "typeid": "1",
+    "sizeid": "0",
+    "default": "0",
+    "zipcode": "99-200",
+    "cityid": "555",
+    "address": "ul. \u0141\u0119czycka 17\/19",
+    "phone": "",
+    "opening": "{\"1\":[\"06:00\",\"22:00\"],\"2\":[\"06:00\",\"22:00\"],\"3\":[\"06:00\",\"22:00\"],\"4\":[\"06:00\",\"22:00\"],\"5\":[\"06:00\",\"22:00\"],\"6\":[\"06:00\",\"22:00\"],\"0\":[\"09:00\",\"20:00\"]}",
+    "cnc_opening": null,
+    "gpslat": "51.896236",
+    "gpslng": "18.960208",
+    "data": {
+      "oldtype": 1,
+      "rentable-places": [],
+      "map": ""
+    },
+    "city_name": "Podd\u0119bice",
+    "store_name": "Supermarket Podd\u0119bice",
+    "distance": "17.2",
+    "open_info": {
+      "opening": [
+        "06:00",
+        "22:00"
+      ],
+      "date": "2021-04-12",
+      "closed": 0,
+      "open_text": "opened_until",
+      "open_now": true
+    },
+    "isFavourite": false,
+    "storeId": "273"
+  }
