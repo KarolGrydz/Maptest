@@ -48,7 +48,7 @@ const BlogSingleGallery = ({ gallery }) => {
 
   return (
     <Container className={classes.root}>
-      {gallery === undefined ? (
+      {gallery === undefined || gallery === null ? (
         <Preloader />
       ) : (
         <Grid container>
@@ -74,8 +74,8 @@ const BlogSingleGallery = ({ gallery }) => {
   );
 };
 
-// BlogSingleGallery.propTypes = {
-//   gallery: propTypes.array.isRequired,
-// };
+BlogSingleGallery.propTypes = {
+  gallery: propTypes.array.isRequired,
+};
 
 export default BlogSingleGallery;

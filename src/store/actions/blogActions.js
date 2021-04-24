@@ -2,6 +2,7 @@ import { of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { map, catchError } from 'rxjs/operators';
 import contentFilter from '../../utils/contentFilter';
+import { posts } from '../../constants/apiUrls';
 
 import {
   GET_TRIPS,
@@ -35,9 +36,7 @@ export const clearTrips = () => ({ type: CLEAR_TRIPS });
 export const setView = (event) => ({ type: SET_VIEW, payload: event });
 
 export const getPosts = (pageNr = 1, query = '') => async (dispatch) => {
-  ajax(
-    `http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy?search=${query}&page=${pageNr}`
-  )
+  ajax(`${posts}?search=${query}&page=${pageNr}`)
     .pipe(
       map((response) => response),
       catchError((error) => of(error))
@@ -67,7 +66,7 @@ export const getPosts = (pageNr = 1, query = '') => async (dispatch) => {
 };
 
 export const getSinglePost = (id) => async (dispatch) => {
-  ajax(`http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy/${id}`)
+  ajax(`${posts}/${id}`)
     .pipe(
       map((response) => response),
       catchError((error) => of(error))
@@ -100,7 +99,6 @@ export const getSingleGallery = (id) => async (dispatch) => {
     )
     .subscribe({
       next: (res) => {
-        console.log(res.response);
         dispatch({
           type: GET_SINGLE_GALLERY,
           payload: res.response,
@@ -116,7 +114,7 @@ export const getSingleGallery = (id) => async (dispatch) => {
 };
 
 export const getSidebarPosts = () => async (dispatch) => {
-  ajax('http://hunter.polkowice.pl/wp-json/wp/v2/wyprawy')
+  ajax(posts)
     .pipe(
       map((response) => response),
       catchError((error) => of(error))
