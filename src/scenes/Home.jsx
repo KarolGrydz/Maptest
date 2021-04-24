@@ -13,10 +13,10 @@ const Home = () => (
     <Movie />
     <Info />
     <Boxes />
-    <Title title="Linki" subTitle="" />
+    <Title title='Linki' subTitle='' />
     <Column />
     <Grid>
-      <Title title="Mapa" subTitle="Wszystkie nasze wyprawy" />
+      <Title title='Mapa' subTitle='Wszystkie nasze wyprawy' />
       <Map />
     </Grid>
     <Facebook />
