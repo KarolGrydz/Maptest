@@ -2,6 +2,7 @@ import {
   GET_TRIPS,
   GET_SINGLE_TRIP,
   GET_SINGLE_GALLERY,
+  GET_FRONT_POSTS,
   CLEAR_TRIPS,
   CLEAR_SINGLE_TRIP,
   TRIP_ERROR,
@@ -18,6 +19,7 @@ const initialState = {
   trips: [],
   singleTrip: {},
   sidebarTrips: [],
+  frontTrips: [],
   pages: 0,
   currentPage: 1,
   tripsNumber: 0,
@@ -48,6 +50,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         singleTrip: { ...state.singleTrip, gallery: action.payload },
+        isLoading: true,
+      };
+
+    case GET_FRONT_POSTS:
+      return {
+        ...state,
+        frontTrips: action.payload,
         isLoading: true,
       };
 

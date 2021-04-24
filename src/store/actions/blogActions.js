@@ -8,6 +8,7 @@ import {
   GET_TRIPS,
   GET_SINGLE_TRIP,
   GET_SINGLE_GALLERY,
+  GET_FRONT_POSTS,
   CLEAR_TRIPS,
   CLEAR_SINGLE_TRIP,
   TRIP_ERROR,
@@ -124,6 +125,45 @@ export const getSidebarPosts = () => async (dispatch) => {
         dispatch({
           type: SET_SIDEBAR_TRIPS,
           payload: res.response,
+        });
+        dispatch({
+          type: SET_TRIPS_NUMBER,
+          payload: res.xhr.getResponseHeader('x-wp-total'),
+        });
+        dispatch({
+          type: SET_PAGES,
+          payload: res.xhr.getResponseHeader('x-wp-totalpages'),
+        });
+      },
+      error: (err) => {
+        dispatch({
+          type: TRIP_ERROR,
+          payload: err.message,
+        });
+      },
+    });
+};
+
+export const getFrontPosts = () => async (dispatch) => {
+  ajax(posts)
+    .pipe(
+      map((response) => response),
+      catchError((error) => of(error))
+    )
+    .subscribe({
+      next: (res) => {
+        const data = res.response.slice(0, 2);
+        dispatch({
+          type: GET_FRONT_POSTS,
+          payload: data,
+        });
+        dispatch({
+          type: SET_TRIPS_NUMBER,
+          payload: res.xhr.getResponseHeader('x-wp-total'),
+        });
+        dispatch({
+          type: SET_PAGES,
+          payload: res.xhr.getResponseHeader('x-wp-totalpages'),
         });
       },
       error: (err) => {

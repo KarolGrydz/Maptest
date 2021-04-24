@@ -12,11 +12,12 @@ import {
   CardContent,
 } from '@material-ui/core';
 
-import Preloader from '../Blog/Preloader';
+import Preloader from '../../Blog/Preloader';
+import BlogButtonMore from '../../Blog/BlogButtonMore';
 
-import { getLoading, getTrips } from '../../store/actions/selectors';
+import { getLoading, getFrontTrips } from '../../../store/actions/selectors';
 
-import { getPosts, clearTrips } from '../../store/actions/blogActions';
+import { getFrontPosts } from '../../../store/actions/blogActions';
 
 import Forest from '../../assets/img/forest.jpg';
 
@@ -66,53 +67,50 @@ const Info = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const isLoading = useSelector(getLoading);
-  const trips = useSelector(getTrips);
+  const frontTrips = useSelector(getFrontTrips);
 
   useEffect(() => {
     let mounted = true;
-    if (mounted) dispatch(getPosts());
+    if (mounted) dispatch(getFrontPosts());
     return () => {
       mounted = false;
-      dispatch(clearTrips());
     };
   }, []);
 
   if (!isLoading) return <Preloader />;
 
-  console.log(trips);
-
   return (
     <Grid className={classes.bgColor}>
       <Container className={classes.root}>
-        {trips[0].id === undefined ? (
+        {!frontTrips.length ? (
           <Preloader />
         ) : (
           <Grid container className={classes.grid}>
             <Grid item xs={8}>
-              <Typography className={classes.title} variant='h5'>
+              <Typography className={classes.title} variant="h5">
                 Ostatnie wyprawy
               </Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography className={classes.title} variant='h5'>
+              <Typography className={classes.title} variant="h5">
                 Informacje o organizowaniu imprez
               </Typography>
             </Grid>
             <Grid item xs={4}>
               <Card className={classes.cardRoot}>
                 <Link
-                  to={`/wyprawy/${trips[0].id}`}
+                  to={`/wyprawy/${frontTrips[0].id}`}
                   className={classes.titleLink}
                 >
                   <CardActionArea>
                     <CardMedia
                       className={classes.cardMedia}
                       image={Forest}
-                      title='Contemplative Reptile'
+                      title="Contemplative Reptile"
                     />
                     <CardContent>
-                      <Typography gutterBottom variant='h5' component='h2'>
-                        {trips[0].title}
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {frontTrips[0].title}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
@@ -122,18 +120,18 @@ const Info = () => {
             <Grid item xs={4}>
               <Card className={classes.cardRoot}>
                 <Link
-                  to={`/wyprawy/${trips[1].id}`}
+                  to={`/wyprawy/${frontTrips[1].id}`}
                   className={classes.titleLink}
                 >
                   <CardActionArea>
                     <CardMedia
                       className={classes.cardMedia}
                       image={Forest}
-                      title='Contemplative Reptile'
+                      title="Contemplative Reptile"
                     />
                     <CardContent>
-                      <Typography gutterBottom variant='h5' component='h2'>
-                        {trips[1].title}
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {frontTrips[1].title}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
@@ -144,8 +142,8 @@ const Info = () => {
               <Card className={classes.cardRoot}>
                 <CardContent>
                   <Typography
-                    variant='h5'
-                    align='center'
+                    variant="h5"
+                    align="center"
                     style={{ margin: '50px 0' }}
                   >
                     Informacja o organizowaniu imprez <br /> dla grup i osób
