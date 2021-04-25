@@ -3,6 +3,8 @@ const returnTrip = (trip) => ({
   title: trip.title.rendered,
   date: trip.date,
   content: trip.content.rendered,
+  featured_media: trip.featured_media,
+  image: trip.image,
 });
 
 export default returnTrip;

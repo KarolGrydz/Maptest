@@ -20,6 +20,11 @@ export const getFrontTrips = createSelector(getBlog, ({ frontTrips }) =>
   frontTrips.map((trip) => returnTrip(trip))
 );
 
+export const frontAttachmentImage = createSelector(
+  getBlog,
+  ({ frontAttachment }) => frontAttachment
+);
+
 export const getAllPagesNumber = createSelector(getBlog, ({ pages }) =>
   Number(pages)
 );

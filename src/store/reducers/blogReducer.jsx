@@ -13,6 +13,7 @@ import {
   SET_PAGES,
   SET_SIDEBAR_TRIPS,
   SET_VIEW,
+  GET_FRONT_ATTACHMENT,
 } from '../actions/types';
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
   singleTrip: {},
   sidebarTrips: [],
   frontTrips: [],
+  frontAttachment: [],
   pages: 0,
   currentPage: 1,
   tripsNumber: 0,
@@ -58,6 +60,12 @@ export default (state = initialState, action) => {
         ...state,
         frontTrips: action.payload,
         isLoading: true,
+      };
+
+    case GET_FRONT_ATTACHMENT:
+      return {
+        ...state,
+        frontAttachment: [...state.frontAttachment, action.payload],
       };
 
     case SEARCH_TRIP:

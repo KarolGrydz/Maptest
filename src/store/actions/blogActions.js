@@ -2,13 +2,14 @@ import { of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { map, catchError } from 'rxjs/operators';
 import contentFilter from '../../utils/contentFilter';
-import { posts } from '../../constants/apiUrls';
+import { posts, media } from '../../constants/apiUrls';
 
 import {
   GET_TRIPS,
   GET_SINGLE_TRIP,
   GET_SINGLE_GALLERY,
   GET_FRONT_POSTS,
+  GET_FRONT_ATTACHMENT,
   CLEAR_TRIPS,
   CLEAR_SINGLE_TRIP,
   TRIP_ERROR,
@@ -164,6 +165,31 @@ export const getFrontPosts = () => async (dispatch) => {
         dispatch({
           type: SET_PAGES,
           payload: res.xhr.getResponseHeader('x-wp-totalpages'),
+        });
+      },
+      error: (err) => {
+        dispatch({
+          type: TRIP_ERROR,
+          payload: err.message,
+        });
+      },
+    });
+};
+
+export const getFrontAttachment = (id) => async (dispatch) => {
+  ajax(`${media}/${id}`)
+    .pipe(
+      map((response) => response),
+      catchError((error) => of(error))
+    )
+    .subscribe({
+      next: (res) => {
+        const data = { id: res.response.id, image: res.response.guid.rendered };
+        // console.log(res.xhr.getResponseHeader('x-wp-total'));
+
+        dispatch({
+          type: GET_FRONT_ATTACHMENT,
+          payload: data,
         });
       },
       error: (err) => {
