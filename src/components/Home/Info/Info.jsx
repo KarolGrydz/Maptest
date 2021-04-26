@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid } from '@material-ui/core';
 
 import Preloader from '../../Blog/Preloader';
-import InfoEvent from './InfoEvent';
 import InfoPosts from './InfoPosts';
+import InfoEvent from './InfoEvent';
 
 import {
   getLoading,
@@ -67,17 +67,15 @@ const Info = () => {
 
   if (!isLoading) return <Preloader />;
 
-  console.log(attachment);
-
   return (
     <Grid className={classes.bgColor}>
       <Container className={classes.root}>
-        {!frontTrips.length ? (
+        {!frontTrips.length && !data.length ? (
           <Preloader />
         ) : (
           <Grid container className={classes.grid}>
-            <InfoEvent frontTrips={frontTrips} />
-            <InfoPosts data={data} />
+            <InfoPosts frontTrips={frontTrips} attachment={attachment} />
+            <InfoEvent data={data} />
           </Grid>
         )}
       </Container>

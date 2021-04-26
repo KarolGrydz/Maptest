@@ -184,7 +184,7 @@ export const getFrontAttachment = (id) => async (dispatch) => {
     )
     .subscribe({
       next: (res) => {
-        const data = { id: res.response.id, image: res.response.guid.rendered };
+        const data = { id: res.response.id, image: res.response.source_url };
         // console.log(res.xhr.getResponseHeader('x-wp-total'));
 
         dispatch({

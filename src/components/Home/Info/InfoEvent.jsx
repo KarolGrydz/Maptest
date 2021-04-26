@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
@@ -10,15 +9,13 @@ import {
   CardContent,
 } from '@material-ui/core';
 
-import Forest from '../../../assets/img/forest.jpg';
-
 const useStyles = makeStyles((theme) => ({
   cardMedia: {
     height: '250px',
   },
 
   title: {
-    padding: theme.spacing(4, 0, 4, 2),
+    padding: theme.spacing(2, 0, 2, 2),
     fontWeight: 'bold',
   },
 
@@ -42,37 +39,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const InfoEvent = ({ frontTrips }) => {
+const InfoEvent = ({ data: { title, content } }) => {
   const classes = useStyles();
-
   return (
-    <Grid item xs={8}>
+    <Grid item xs={4}>
       <Grid item xs={12}>
         <Typography className={classes.title} variant="h5">
-          Ostatnie wyprawy
+          {title.rendered}
         </Typography>
       </Grid>
-      <Grid container>
-        {frontTrips.map(({ id, title }) => (
-          <Grid item xs={6} key={id}>
-            <Card className={classes.cardRoot}>
-              <Link to={`/wyprawy/${id}`} className={classes.titleLink}>
-                <CardActionArea>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image={Forest}
-                    title="Contemplative Reptile"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {title}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Link>
-            </Card>
-          </Grid>
-        ))}
+      <Grid item xs={12}>
+        <Card className={classes.cardRoot}>
+          <CardContent>
+            <Typography
+              variant="h5"
+              align="center"
+              style={{ margin: '50px 0' }}
+            >
+              <div dangerouslySetInnerHTML={{ __html: content.rendered }} />
+            </Typography>
+          </CardContent>
+        </Card>
       </Grid>
     </Grid>
   );
