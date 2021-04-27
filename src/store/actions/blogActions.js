@@ -12,6 +12,7 @@ import {
   GET_FRONT_ATTACHMENT,
   CLEAR_TRIPS,
   CLEAR_SINGLE_TRIP,
+  CLEAR_FRONT_TRIPS,
   TRIP_ERROR,
   SEARCH_TRIP,
   SET_LOADING,
@@ -34,6 +35,8 @@ export const setLoading = () => ({ type: SET_LOADING });
 export const clearCurrentTrip = () => ({ type: CLEAR_SINGLE_TRIP });
 
 export const clearTrips = () => ({ type: CLEAR_TRIPS });
+
+export const clearFrontTrips = () => ({ type: CLEAR_FRONT_TRIPS });
 
 export const setView = (event) => ({ type: SET_VIEW, payload: event });
 
@@ -177,26 +180,28 @@ export const getFrontPosts = () => async (dispatch) => {
 };
 
 export const getFrontAttachment = (id) => async (dispatch) => {
-  ajax(`${media}/${id}`)
-    .pipe(
-      map((response) => response),
-      catchError((error) => of(error))
-    )
-    .subscribe({
-      next: (res) => {
-        const data = { id: res.response.id, image: res.response.source_url };
-        // console.log(res.xhr.getResponseHeader('x-wp-total'));
+  if (id !== 0) {
+    ajax(`${media}/${id}`)
+      .pipe(
+        map((response) => response),
+        catchError((error) => of(error))
+      )
+      .subscribe({
+        next: (res) => {
+          const data = { id: res.response.id, image: res.response.source_url };
+          // console.log(res.xhr.getResponseHeader('x-wp-total'));
 
-        dispatch({
-          type: GET_FRONT_ATTACHMENT,
-          payload: data,
-        });
-      },
-      error: (err) => {
-        dispatch({
-          type: TRIP_ERROR,
-          payload: err.message,
-        });
-      },
-    });
+          dispatch({
+            type: GET_FRONT_ATTACHMENT,
+            payload: data,
+          });
+        },
+        error: (err) => {
+          dispatch({
+            type: TRIP_ERROR,
+            payload: err.message,
+          });
+        },
+      });
+  }
 };

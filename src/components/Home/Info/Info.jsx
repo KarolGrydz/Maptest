@@ -7,15 +7,12 @@ import Preloader from '../../Blog/Preloader';
 import InfoPosts from './InfoPosts';
 import InfoEvent from './InfoEvent';
 
-import {
-  getLoading,
-  getFrontTrips,
-  frontAttachmentImage,
-} from '../../../store/actions/selectors';
+import { getLoading, getFrontTrips } from '../../../store/actions/selectors';
 
 import {
   getFrontPosts,
   getFrontAttachment,
+  clearFrontTrips,
 } from '../../../store/actions/blogActions';
 
 import usePages from '../../../hooks/usePages';
@@ -40,7 +37,6 @@ const Info = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getLoading);
   const frontTrips = useSelector(getFrontTrips);
-  const attachment = useSelector(frontAttachmentImage);
   const data = usePages(events);
 
   useEffect(() => {
@@ -48,17 +44,16 @@ const Info = () => {
     if (mounted) dispatch(getFrontPosts());
     return () => {
       mounted = false;
+      dispatch(clearFrontTrips());
     };
   }, []);
 
   useEffect(() => {
     let mounted = true;
-    if (mounted && frontTrips.length) {
-      frontTrips.map((trip) => {
-        if (trip.featured_media !== 0) {
-          dispatch(getFrontAttachment(trip.featured_media));
-        }
-      });
+    if (mounted && frontTrips.length !== 0) {
+      frontTrips.map((trip) =>
+        dispatch(getFrontAttachment(trip.featured_media))
+      );
     }
     return () => {
       mounted = false;
@@ -70,11 +65,11 @@ const Info = () => {
   return (
     <Grid className={classes.bgColor}>
       <Container className={classes.root}>
-        {!frontTrips.length && !data.length ? (
+        {data.length === 0 || !frontTrips.length ? (
           <Preloader />
         ) : (
           <Grid container className={classes.grid}>
-            <InfoPosts frontTrips={frontTrips} attachment={attachment} />
+            <InfoPosts frontTrips={frontTrips} />
             <InfoEvent data={data} />
           </Grid>
         )}

@@ -42,9 +42,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const InfoPosts = ({ frontTrips, attachment }) => {
+const InfoPosts = ({ frontTrips }) => {
   const classes = useStyles();
-  console.log(Forest);
   return (
     <Grid item xs={8}>
       <Grid item xs={12}>
@@ -53,16 +52,14 @@ const InfoPosts = ({ frontTrips, attachment }) => {
         </Typography>
       </Grid>
       <Grid container>
-        {frontTrips.map(({ id, title, featured_media }) => (
+        {frontTrips.map(({ id, title, image }) => (
           <Grid item xs={6} key={id}>
             <Card className={classes.cardRoot}>
               <Link to={`/wyprawy/${id}`} className={classes.titleLink}>
                 <CardActionArea>
                   <CardMedia
                     className={classes.cardMedia}
-                    image={attachment.map(({ id, image }) =>
-                      id === featured_media ? image : Forest
-                    )}
+                    image={image ? image : Forest}
                     title="Contemplative Reptile"
                   />
                   <CardContent>

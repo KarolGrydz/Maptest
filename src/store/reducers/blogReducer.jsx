@@ -5,6 +5,7 @@ import {
   GET_FRONT_POSTS,
   CLEAR_TRIPS,
   CLEAR_SINGLE_TRIP,
+  CLEAR_FRONT_TRIPS,
   TRIP_ERROR,
   SEARCH_TRIP,
   SET_LOADING,
@@ -21,7 +22,6 @@ const initialState = {
   singleTrip: {},
   sidebarTrips: [],
   frontTrips: [],
-  frontAttachment: [],
   pages: 0,
   currentPage: 1,
   tripsNumber: 0,
@@ -65,7 +65,11 @@ export default (state = initialState, action) => {
     case GET_FRONT_ATTACHMENT:
       return {
         ...state,
-        frontAttachment: [...state.frontAttachment, action.payload],
+        frontTrips: state.frontTrips.map((trip) =>
+          trip.featured_media === action.payload.id
+            ? { ...trip, image: action.payload.image }
+            : { ...trip }
+        ),
       };
 
     case SEARCH_TRIP:
@@ -85,6 +89,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         singleTrip: {},
+        isLoading: false,
+      };
+
+    case CLEAR_FRONT_TRIPS:
+      return {
+        ...state,
+        frontTrips: [],
         isLoading: false,
       };
 

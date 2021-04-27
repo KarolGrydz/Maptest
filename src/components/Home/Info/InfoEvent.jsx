@@ -1,13 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Typography,
-  Grid,
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardContent,
-} from '@material-ui/core';
+import { Typography, Grid, Card, CardContent } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   cardMedia: {
@@ -56,7 +49,11 @@ const InfoEvent = ({ data: { title, content } }) => {
               align="center"
               style={{ margin: '50px 0' }}
             >
-              <div dangerouslySetInnerHTML={{ __html: content.rendered }} />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: content.rendered,
+                }}
+              />
             </Typography>
           </CardContent>
         </Card>
