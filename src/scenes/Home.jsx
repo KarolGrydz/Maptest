@@ -4,8 +4,7 @@ import Movie from '../components/Home/Movie';
 import Column from '../components/Home/Column';
 import Boxes from '../components/Home/Boxes';
 import Title from '../components/Title';
-import Info from '../components/Home/Info';
-import Facebook from '../components/Home/Facebook';
+import Info from '../components/Home/Info/Info';
 import { Grid } from '@material-ui/core';
 
 const Home = () => (
@@ -13,13 +12,12 @@ const Home = () => (
     <Movie />
     <Info />
     <Boxes />
-    <Title title='Linki' subTitle='' />
+    <Title title="Linki" subTitle="" />
     <Column />
     <Grid>
-      <Title title='Mapa' subTitle='Wszystkie nasze wyprawy' />
+      <Title title="Mapa" subTitle="Wszystkie nasze wyprawy" />
       <Map />
     </Grid>
-    <Facebook />
   </>
 );
 

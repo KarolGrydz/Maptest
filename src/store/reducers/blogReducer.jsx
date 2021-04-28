@@ -2,8 +2,10 @@ import {
   GET_TRIPS,
   GET_SINGLE_TRIP,
   GET_SINGLE_GALLERY,
+  GET_FRONT_POSTS,
   CLEAR_TRIPS,
   CLEAR_SINGLE_TRIP,
+  CLEAR_FRONT_TRIPS,
   TRIP_ERROR,
   SEARCH_TRIP,
   SET_LOADING,
@@ -12,12 +14,14 @@ import {
   SET_PAGES,
   SET_SIDEBAR_TRIPS,
   SET_VIEW,
+  GET_FRONT_ATTACHMENT,
 } from '../actions/types';
 
 const initialState = {
   trips: [],
   singleTrip: {},
   sidebarTrips: [],
+  frontTrips: [],
   pages: 0,
   currentPage: 1,
   tripsNumber: 0,
@@ -51,6 +55,23 @@ export default (state = initialState, action) => {
         isLoading: true,
       };
 
+    case GET_FRONT_POSTS:
+      return {
+        ...state,
+        frontTrips: action.payload,
+        isLoading: true,
+      };
+
+    case GET_FRONT_ATTACHMENT:
+      return {
+        ...state,
+        frontTrips: state.frontTrips.map((trip) =>
+          trip.featured_media === action.payload.id
+            ? { ...trip, image: action.payload.image }
+            : { ...trip }
+        ),
+      };
+
     case SEARCH_TRIP:
       return {
         ...state,
@@ -68,6 +89,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         singleTrip: {},
+        isLoading: false,
+      };
+
+    case CLEAR_FRONT_TRIPS:
+      return {
+        ...state,
+        frontTrips: [],
         isLoading: false,
       };
 
