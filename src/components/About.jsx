@@ -5,10 +5,12 @@ import { Container, Grid, Typography, Fade } from '@material-ui/core';
 import { about } from '../constants/apiUrls';
 import Preloader from './Blog/Preloader';
 import usePages from '../hooks/usePages';
+import Forest from '../assets/img/forest.jpg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     textAlign: 'center',
+    // backgroundImage: `url(${Forest})`,
   },
   title: {
     padding: theme.spacing(3, 0),
@@ -29,10 +31,10 @@ const About = () => {
   if (R.isEmpty(data)) return <Preloader />;
 
   return (
-    <Container className={classes.root} maxWidth='md'>
+    <Container className={classes.root} maxWidth="md">
       <Fade in timeout={2500}>
-        <Grid container justify='center'>
-          <Typography variant='h3' className={classes.title}>
+        <Grid container justify="center">
+          <Typography variant="h3" className={classes.title}>
             {data.title.rendered}
           </Typography>
           <Typography className={classes.text}>

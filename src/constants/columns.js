@@ -1,15 +1,15 @@
-import Cave3 from '../assets/img/cave3.jpg';
-import Friends from '../assets/img/friends.jpg';
-import Letter from '../assets/img/letter.jpg';
-import Recommend from '../assets/img/recommend.jpg';
+import Cave3 from '../assets/img/cave1.JPG';
+import Team from '../assets/img/team.jpg';
+import Kontakt from '../assets/img/kontakt.JPG';
+import Polecane from '../assets/img/polecane.JPG';
 import Forest from '../assets/img/forest.jpg';
 
 const columns = [
   {
-    label: 'Kim jesteśmy?',
+    label: 'Kim jesteśmy',
     id: 'kim-jestesmy',
     link: '/kim-jestesmy',
-    img: Friends,
+    img: Team,
   },
   {
     label: 'Wyprawy',
@@ -21,13 +21,13 @@ const columns = [
     label: 'Polecane',
     id: 'przyjaciele',
     link: '/przyjaciele',
-    img: Recommend,
+    img: Polecane,
   },
   {
     label: 'Kontakt',
     id: 'kontakt',
     link: '/kontakt',
-    img: Letter,
+    img: Kontakt,
   },
 ];
 

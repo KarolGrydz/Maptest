@@ -16,6 +16,7 @@ import {
   SET_VIEW,
   SET_IMAGES_NUMBER,
   GET_FRONT_ATTACHMENT,
+  GET_ATTACHMENT,
 } from '../actions/types';
 
 const initialState = {
@@ -68,6 +69,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         frontTrips: state.frontTrips.map((trip) =>
+          trip.featured_media === action.payload.id
+            ? { ...trip, image: action.payload.image }
+            : { ...trip }
+        ),
+      };
+
+    case GET_ATTACHMENT:
+      return {
+        ...state,
+        trips: state.trips.map((trip) =>
           trip.featured_media === action.payload.id
             ? { ...trip, image: action.payload.image }
             : { ...trip }
