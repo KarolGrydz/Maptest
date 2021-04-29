@@ -14,6 +14,7 @@ import {
   SET_PAGES,
   SET_SIDEBAR_TRIPS,
   SET_VIEW,
+  SET_IMAGES_NUMBER,
   GET_FRONT_ATTACHMENT,
 } from '../actions/types';
 
@@ -25,6 +26,7 @@ const initialState = {
   pages: 0,
   currentPage: 1,
   tripsNumber: 0,
+  imagesNumber: 0,
   search: '',
   isLoading: false,
   error: null,
@@ -139,6 +141,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         view: action.payload,
+      };
+
+    case SET_IMAGES_NUMBER:
+      return {
+        ...state,
+        imagesNumber: action.payload,
       };
 
     default:

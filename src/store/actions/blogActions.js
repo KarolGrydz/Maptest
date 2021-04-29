@@ -21,6 +21,7 @@ import {
   SET_PAGES,
   SET_SIDEBAR_TRIPS,
   SET_VIEW,
+  SET_IMAGES_NUMBER,
 } from './types';
 
 export const setCurrentPage = (event) => ({
@@ -180,6 +181,36 @@ export const getFrontPosts = () => async (dispatch) => {
 };
 
 export const getFrontAttachment = (id) => async (dispatch) => {
+  if (id !== 0) {
+    ajax(`${media}/${id}`)
+      .pipe(
+        map((response) => response),
+        catchError((error) => of(error))
+      )
+      .subscribe({
+        next: (res) => {
+          const data = { id: res.response.id, image: res.response.source_url };
+
+          dispatch({
+            type: GET_FRONT_ATTACHMENT,
+            payload: data,
+          });
+          dispatch({
+            type: SET_IMAGES_NUMBER,
+            payload: res.xhr.getResponseHeader('x-wp-total'),
+          });
+        },
+        error: (err) => {
+          dispatch({
+            type: TRIP_ERROR,
+            payload: err.message,
+          });
+        },
+      });
+  }
+};
+
+export const getAttachment = (id) => async (dispatch) => {
   if (id !== 0) {
     ajax(`${media}/${id}`)
       .pipe(

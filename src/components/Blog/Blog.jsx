@@ -16,6 +16,7 @@ import {
   getSearch,
   getLoading,
   getTrips,
+  getAttachment,
 } from '../../store/actions/selectors';
 import { getPosts, clearTrips } from '../../store/actions/blogActions';
 
@@ -42,6 +43,16 @@ const Blog = () => {
       dispatch(clearTrips());
     };
   }, [currentPage, search]);
+
+  // useEffect(() => {
+  //   let mounted = true;
+  //   if (mounted && trips.length !== 0) {
+  //     trips.map((trip) => dispatch(getAttachment(trip.featured_media)));
+  //   }
+  //   return () => {
+  //     mounted = false;
+  //   };
+  // }, [frontTrips.length]);
 
   if (!isLoading) return <Preloader />;
 

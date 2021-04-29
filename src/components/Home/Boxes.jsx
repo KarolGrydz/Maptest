@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 import CountUp from 'react-countup';
 import { makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  getAllPostNumber,
+  getImagesNumber,
+} from '../../store/actions/selectors';
 import {
   faCameraRetro,
   faGlobeAfrica,
@@ -46,6 +50,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Boxes = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    let mounted = true;
+    if (mounted) dispatch(getFrontPosts());
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   return (
     <div className={classes.root}>
