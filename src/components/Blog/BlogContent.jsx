@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import propTypes from 'prop-types';
-import { Grid, Typography, Container } from '@material-ui/core';
+import { Grid, Container } from '@material-ui/core';
 
 import BlogTitle from './BlogTitle';
 import BlogButtonMore from './BlogButtonMore';

@@ -5,12 +5,10 @@ import { Container, Grid, Typography, Fade } from '@material-ui/core';
 import { about } from '../constants/apiUrls';
 import Preloader from './Blog/Preloader';
 import usePages from '../hooks/usePages';
-import Forest from '../assets/img/forest.jpg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     textAlign: 'center',
-    // backgroundImage: `url(${Forest})`,
   },
   title: {
     padding: theme.spacing(3, 0),

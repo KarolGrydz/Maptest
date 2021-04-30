@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     padding: theme.spacing(4, 0, 4, 2),
     fontWeight: 'bold',
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+    },
   },
 
   titleLink: {
@@ -39,13 +42,16 @@ const useStyles = makeStyles((theme) => ({
   cardRoot: {
     margin: theme.spacing(0, 2),
     border: 'solid 2px #e4e7e8',
+    [theme.breakpoints.down('xs')]: {
+      margin: theme.spacing(0, 2, 2, 2),
+    },
   },
 }));
 
 const InfoPosts = ({ frontTrips }) => {
   const classes = useStyles();
   return (
-    <Grid item xs={8}>
+    <Grid item xs={12} sm={12} md={8}>
       <Grid item xs={12}>
         <Typography className={classes.title} variant="h5">
           Ostatnie wyprawy
@@ -53,7 +59,7 @@ const InfoPosts = ({ frontTrips }) => {
       </Grid>
       <Grid container>
         {frontTrips.map(({ id, title, image }) => (
-          <Grid item xs={6} key={id}>
+          <Grid item xs={12} sm={6} key={id}>
             <Card className={classes.cardRoot}>
               <Link to={`/wyprawy/${id}`} className={classes.titleLink}>
                 <CardActionArea>

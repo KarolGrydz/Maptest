@@ -45,6 +45,7 @@ const Blog = () => {
       mounted = false;
       dispatch(clearTrips());
     };
+    // eslint-disable-next-line
   }, [currentPage, search]);
 
   useEffect(() => {
@@ -55,6 +56,7 @@ const Blog = () => {
     return () => {
       mounted = false;
     };
+    // eslint-disable-next-line
   }, [trips.length]);
 
   console.log(trips);

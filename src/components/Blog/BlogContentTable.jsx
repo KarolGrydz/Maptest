@@ -42,15 +42,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const useTableCellStyles = makeStyles(
-  {
-    root: {
-      padding: '1px',
-    },
-  },
-  { name: 'MuiTableCell' }
-);
-
 const BlogContentTable = ({ posts }) => {
   const classes = useStyles();
 

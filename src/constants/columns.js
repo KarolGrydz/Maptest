@@ -2,7 +2,6 @@ import Cave3 from '../assets/img/cave1.JPG';
 import Team from '../assets/img/team.jpg';
 import Kontakt from '../assets/img/kontakt.JPG';
 import Polecane from '../assets/img/polecane.JPG';
-import Forest from '../assets/img/forest.jpg';
 
 const columns = [
   {
