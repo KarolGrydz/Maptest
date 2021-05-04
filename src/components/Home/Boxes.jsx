@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(15, 0),
     background: `url(${Fire}) no-repeat center center fixed`,
     backgroundSize: 'cover',
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(3, 0),
+    },
   },
 
   card: {
@@ -58,7 +61,7 @@ const Boxes = () => {
     <div className={classes.root}>
       <Container>
         <Grid container>
-          <Grid item xs={5}>
+          <Grid item xs={12} sm={12} md={5}>
             <Card className={classes.card}>
               <CardContent className={classes.cardContent}>
                 <VisibilitySensor>
@@ -80,8 +83,8 @@ const Boxes = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={2}></Grid>
-          <Grid item xs={5}>
+          <Grid item md={2}></Grid>
+          <Grid xs={12} sm={12} md={5}>
             <Card className={classes.card}>
               <CardContent className={classes.cardContent}>
                 <VisibilitySensor>

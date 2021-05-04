@@ -52,7 +52,7 @@ const BlogSingleGallery = ({ gallery }) => {
         <Preloader />
       ) : (
         <Grid container>
-          <Grid item xs={9}>
+          <Grid item xs={12} sm={12} md={9}>
             <SRLWrapper options={options}>
               <div className={classes.gallery}>
                 {gallery.map((image) => (

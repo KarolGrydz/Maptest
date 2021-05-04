@@ -48,7 +48,7 @@ const Column = () => {
   return (
     <Grid container>
       {columns.map(({ label, id, link, img }) => (
-        <Grid item xs={3} className={classes.root} key={id}>
+        <Grid item xs={12} sm={12} md={3} className={classes.root} key={id}>
           <Typography variant="h5" align="center" className={classes.text}>
             {label}
           </Typography>
