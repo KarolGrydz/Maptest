@@ -32,6 +32,10 @@ export const getAllPostNumber = createSelector(getBlog, ({ tripsNumber }) =>
   Number(tripsNumber)
 );
 
+export const getImagesNumber = createSelector(getBlog, ({ imagesNumber }) =>
+  Number(imagesNumber)
+);
+
 export const getSearch = createSelector(getBlog, ({ search }) => search);
 
 export const getLoading = createSelector(getBlog, ({ isLoading }) => isLoading);

@@ -1,8 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import VisibilitySensor from 'react-visibility-sensor';
 import CountUp from 'react-countup';
 import { makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  getAllPostNumber,
+  getImagesNumber,
+} from '../../store/actions/selectors';
 import {
   faCameraRetro,
   faGlobeAfrica,
@@ -21,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(15, 0),
     background: `url(${Fire}) no-repeat center center fixed`,
     backgroundSize: 'cover',
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(3, 0),
+    },
   },
 
   card: {
@@ -46,20 +54,22 @@ const useStyles = makeStyles((theme) => ({
 
 const Boxes = () => {
   const classes = useStyles();
+  const allPostNumber = useSelector(getAllPostNumber);
+  const allImagesNumber = useSelector(getImagesNumber);
 
   return (
     <div className={classes.root}>
       <Container>
         <Grid container>
-          <Grid item xs={5}>
+          <Grid item xs={12} sm={12} md={5}>
             <Card className={classes.card}>
               <CardContent className={classes.cardContent}>
                 <VisibilitySensor>
                   {({ isVisible }) => (
-                    <Typography variant='h5' align='center' gutterBottom={true}>
+                    <Typography variant="h5" align="center" gutterBottom={true}>
                       <CountUp
-                        end={146}
-                        start={isVisible ? 0 : 146}
+                        end={allPostNumber}
+                        start={isVisible ? 0 : allPostNumber}
                         duration={4}
                       />{' '}
                       wypraw udokumentowanych na naszej stronie
@@ -73,16 +83,16 @@ const Boxes = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={2}></Grid>
-          <Grid item xs={5}>
+          <Grid item md={2}></Grid>
+          <Grid xs={12} sm={12} md={5}>
             <Card className={classes.card}>
               <CardContent className={classes.cardContent}>
                 <VisibilitySensor>
                   {({ isVisible }) => (
-                    <Typography variant='h5' align='center' gutterBottom={true}>
+                    <Typography variant="h5" align="center" gutterBottom={true}>
                       <CountUp
-                        end={3277}
-                        start={isVisible ? 0 : 3277}
+                        end={allImagesNumber}
+                        start={isVisible ? 0 : allImagesNumber}
                         duration={4}
                       />{' '}
                       zdjęć w galeriach

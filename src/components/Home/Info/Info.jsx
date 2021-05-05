@@ -21,6 +21,10 @@ import { events } from '../../../constants/apiUrls';
 const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: theme.spacing(10),
+    [theme.breakpoints.down('xs')]: {
+      padding: 0,
+      paddingTop: theme.spacing(3),
+    },
   },
 
   bgColor: {
@@ -29,6 +33,10 @@ const useStyles = makeStyles((theme) => ({
 
   grid: {
     padding: theme.spacing(5),
+    [theme.breakpoints.down('xs')]: {
+      padding: 0,
+      paddingBottom: theme.spacing(3),
+    },
   },
 }));
 

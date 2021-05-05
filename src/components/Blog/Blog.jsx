@@ -17,7 +17,11 @@ import {
   getLoading,
   getTrips,
 } from '../../store/actions/selectors';
-import { getPosts, clearTrips } from '../../store/actions/blogActions';
+import {
+  getPosts,
+  clearTrips,
+  getAttachment,
+} from '../../store/actions/blogActions';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -41,7 +45,21 @@ const Blog = () => {
       mounted = false;
       dispatch(clearTrips());
     };
+    // eslint-disable-next-line
   }, [currentPage, search]);
+
+  useEffect(() => {
+    let mounted = true;
+    if (mounted && trips.length !== 0) {
+      trips.map((trip) => dispatch(getAttachment(trip.featured_media)));
+    }
+    return () => {
+      mounted = false;
+    };
+    // eslint-disable-next-line
+  }, [trips.length]);
+
+  console.log(trips);
 
   if (!isLoading) return <Preloader />;
 

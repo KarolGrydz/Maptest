@@ -30,6 +30,7 @@ const BlogSidebarPosts = () => {
     return () => {
       mounted = false;
     };
+    //eslint-disable-next-line
   }, []);
 
   if (!isLoading) return <Preloader />;

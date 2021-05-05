@@ -66,7 +66,7 @@ const BlogSingle = ({ match }) => {
         <Preloader />
       ) : (
         <Grid container>
-          <Grid item xs={9}>
+          <Grid item xs={12} sm={12} md={9}>
             <div className={classes.postContainer} key={post.id}>
               <BlogTitle id={post.id} title={post.title.rendered} />
               <BlogDate date={post.date} text="Data wyprawy: " />

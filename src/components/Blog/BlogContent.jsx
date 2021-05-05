@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import propTypes from 'prop-types';
-import { Grid, Typography, Container } from '@material-ui/core';
+import { Grid, Container } from '@material-ui/core';
 
 import BlogTitle from './BlogTitle';
 import BlogButtonMore from './BlogButtonMore';
@@ -48,13 +48,17 @@ const BlogContent = ({ posts }) => {
   return (
     <Grid item xs={12} md={9}>
       {posts.length !== 0 ? (
-        posts.map(({ id, title, date }) => (
+        posts.map(({ id, title, date, image }) => (
           <div className={classes.root} key={id}>
             <BlogTitle id={id} title={title} />
             <BlogDate date={date} text="Data wyprawy: " />
             <div
               className={classes.postImg}
-              style={{ backgroundImage: `url(${randomImg()})` }}
+              style={{
+                backgroundImage: `url(${
+                  image !== undefined ? image : randomImg()
+                })`,
+              }}
             />
             <Container className={classes.description}>
               <BlogButtonMore id={id} text="Czytaj" />

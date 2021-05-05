@@ -14,7 +14,9 @@ import {
   SET_PAGES,
   SET_SIDEBAR_TRIPS,
   SET_VIEW,
+  SET_IMAGES_NUMBER,
   GET_FRONT_ATTACHMENT,
+  GET_ATTACHMENT,
 } from '../actions/types';
 
 const initialState = {
@@ -25,6 +27,7 @@ const initialState = {
   pages: 0,
   currentPage: 1,
   tripsNumber: 0,
+  imagesNumber: 0,
   search: '',
   isLoading: false,
   error: null,
@@ -66,6 +69,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         frontTrips: state.frontTrips.map((trip) =>
+          trip.featured_media === action.payload.id
+            ? { ...trip, image: action.payload.image }
+            : { ...trip }
+        ),
+      };
+
+    case GET_ATTACHMENT:
+      return {
+        ...state,
+        trips: state.trips.map((trip) =>
           trip.featured_media === action.payload.id
             ? { ...trip, image: action.payload.image }
             : { ...trip }
@@ -139,6 +152,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         view: action.payload,
+      };
+
+    case SET_IMAGES_NUMBER:
+      return {
+        ...state,
+        imagesNumber: action.payload,
       };
 
     default:
