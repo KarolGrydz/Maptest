@@ -58,7 +58,6 @@ const BlogSingle = ({ match }) => {
     // eslint-disable-next-line
   }, [match.params.id]);
 
-  // console.log(post);
   if (!isLoading) return <Preloader />;
 
   return (
