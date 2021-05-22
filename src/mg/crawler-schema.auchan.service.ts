@@ -156,7 +156,7 @@ export class CrawlerSchemaAuchanService extends CrawlerSchemaAbstractService {
     const shopData = new ShopDto();
     shopData.shop = this.shopName;
     shopData.openHour = {} as any;
-    shopData.address = shopRaw.adres;
+    shopData.address = shopRaw.address.address;
     shopData.postCode = shopRaw.kod_pocztowy;
     shopData.city = shopRaw.miasto.toUpperCase();
 
