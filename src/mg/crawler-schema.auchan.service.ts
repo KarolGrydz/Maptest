@@ -5,22 +5,50 @@ import { Logger } from '@nestjs/common';
 import { ScraperFetchTool } from '../../scraper/scraper.model';
 import {mockAuchanApiJsonResponse} from '../../../mocks/auchan.mock'
 
-/**
- * Models
- */
-// export interface SklepyGamaShopRawData {
-//   id: number;
-//   miasto: string;
-//   kod_pocztowy: string;
-//   adres: string;
-//   typ: string;
-//   pon_pt: string;
-//   sob: string;
-//   nd: string;
-//   lat: string;
-//   lng: string;
-//   nr_sklepu: string;
-// }
+export interface AuchanImagesRawData {
+  largeBanner: {
+    large: {
+      url: string,
+      alt: string,
+      webp: string,
+    },
+    desktop: {
+      url: string,
+      alt: string,
+      webp: string,
+    },
+    tablet: {
+      url: string,
+      alt: string,
+      webp: string,
+    },
+    mobile: {
+      url: string,
+      alt: string,
+      webp: string,
+    },
+  },
+  banner: {
+    large: {
+      url: string,
+      alt: string,
+    },
+    desktop: {
+      url: string,
+      alt: string,
+    },
+    tablet: {
+      url: string,
+      alt: string,
+    },
+    mobile: {
+      url: string,
+      alt: string,
+    },
+    type: string,
+    json: boolean,
+  },
+}
 
 export interface AuchanContactRawData {
     email: string,
@@ -72,7 +100,29 @@ export interface AuchanResponseRawData {
     address: AuchanAdressRawData,
     contact: AuchanContactRawData,
     productCatalogID: string,
-    
+    transport: {
+      parking: {
+        slots: string,
+        disabledSlots: string,
+        electricSlots: string
+      },
+      transports: {
+        publicTransportURL: boolean, 
+        bike: {transportURL: string, stations: boolean},
+        tram: boolean,
+        bus: boolean
+      },
+    },
+    gasStation: boolean,
+    gallery: boolean,
+    images: AuchanImagesRawData,
+    deliveryAreas: {include: [], exclude: []},
+    metaInformation: {title: string, description: string, image: null, nofollow: boolean},
+    parent: {title: string, urlFriendlyName: null, parent: [], section: null},
+    customCSS: string,
+    customJS: null,
+    socialSharing: null,
+    expiration: {date: string, options: string},
 }
 
 export class CrawlerSchemaAuchanService extends CrawlerSchemaAbstractService {
@@ -102,7 +152,7 @@ export class CrawlerSchemaAuchanService extends CrawlerSchemaAbstractService {
     }
   }
 
-  private extractShopDataFromJson(shopRaw: SklepyGamaShopRawData): ShopDto {
+  private extractShopDataFromJson(shopRaw: AuchanResponseRawData): ShopDto {
     const shopData = new ShopDto();
     shopData.shop = this.shopName;
     shopData.openHour = {} as any;
